@@ -1,0 +1,19 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.12">
+  <DUT Name="ST_ConvertedPower" Id="{f22fa59b-b706-4076-9381-5d0f0ea3e22f}">
+    <Declaration><![CDATA[TYPE ST_ConvertedPower :
+	STRUCT
+		Current			:LREAL	;	//Display the channel's current 
+		Voltage			:LREAL	;	//Display the channel's voltage
+		ActivePower		:LREAL	;	//Display the channel's active power
+		ApparentPower	:LREAL	;	//Potência aparente
+		ReactivePower	:LREAL	;	//potencia reativa
+		Energy			:LREAL	;	//Energia
+		Cosphi			:LREAL	;	//cosseno PHI
+		Frequency		:LREAL	;	//Display the channel's Frequency
+		EnergyNegative	:LREAL	;	//Energia (Negativa)
+		AngleBetweenPhase1	:LREAL	;	//Angulo entre essa fase e a fase 1
+	END_STRUCT
+END_TYPE]]></Declaration>
+  </DUT>
+</TcPlcObject>

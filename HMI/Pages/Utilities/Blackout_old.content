@@ -1,0 +1,364 @@
+<div id="Blackout" data-tchmi-type="TcHmi.Controls.System.TcHmiContent" data-tchmi-top="0" data-tchmi-left="0" data-tchmi-width="100" data-tchmi-height="100" data-tchmi-width-unit="%" data-tchmi-height-unit="%" data-tchmi-zindex="1">
+
+<div id="TcHmiRectangle" data-tchmi-type="TcHmi.Controls.Beckhoff.TcHmiRectangle" data-tchmi-height="319" data-tchmi-height-unit="px" data-tchmi-left="23" data-tchmi-left-unit="px" data-tchmi-top="99" data-tchmi-top-unit="px" data-tchmi-width="858" data-tchmi-width-unit="px" data-tchmi-zindex="0">
+
+<script data-tchmi-target-attribute="data-tchmi-border-style" type="application/json">
+{
+  "left": "Dashed",
+  "right": "Dashed",
+  "top": "Dashed",
+  "bottom": "Dashed"
+}
+</script>
+
+<script data-tchmi-target-attribute="data-tchmi-border-width" type="application/json">
+{
+  "left": 4,
+  "right": 4,
+  "top": 4,
+  "bottom": 4,
+  "leftUnit": "px",
+  "rightUnit": "px",
+  "topUnit": "px",
+  "bottomUnit": "px"
+}
+</script>
+
+<script data-tchmi-target-attribute="data-tchmi-background-image-padding" type="application/json">
+{
+  "left": 0,
+  "right": 0,
+  "top": 0,
+  "bottom": 0,
+  "leftUnit": "px",
+  "rightUnit": "px",
+  "topUnit": "px",
+  "bottomUnit": "px"
+}
+</script>
+</div>
+<div id="UcValve" data-tchmi-type="TcHmi.Controls.System.TcHmiUserControlHost" data-tchmi-height="83" data-tchmi-height-unit="px" data-tchmi-left="66" data-tchmi-left-unit="px" data-tchmi-target-user-control="UserControl/ucValve.usercontrol" data-tchmi-top="278" data-tchmi-top-unit="px" data-tchmi-width="97" data-tchmi-width-unit="px" data-tchmi-zindex="1">
+</div>
+
+<script data-tchmi-target-attribute="data-tchmi-border-width" type="application/json">
+{
+  "left": 0,
+  "right": 0,
+  "top": 0,
+  "bottom": 0,
+  "leftUnit": "px",
+  "rightUnit": "px",
+  "topUnit": "px",
+  "bottomUnit": "px"
+}
+</script>
+<div id="UcPump_1" data-tchmi-type="TcHmi.Controls.System.TcHmiUserControlHost" data-tchmi-height="104" data-tchmi-height-unit="px" data-tchmi-left="182" data-tchmi-left-unit="px" data-tchmi-target-user-control="UserControl/ucPump.usercontrol" data-tchmi-top="270" data-tchmi-top-unit="px" data-tchmi-width="100" data-tchmi-width-unit="px" data-tchmi-zindex="2">
+</div>
+<div id="UcValve_4" data-tchmi-type="TcHmi.Controls.System.TcHmiUserControlHost" data-tchmi-height="83" data-tchmi-height-unit="px" data-tchmi-left="300" data-tchmi-left-unit="px" data-tchmi-target-user-control="UserControl/ucValve.usercontrol" data-tchmi-top="264" data-tchmi-top-unit="px" data-tchmi-width="97" data-tchmi-width-unit="px" data-tchmi-zindex="1">
+</div>
+<div id="UcValve_5" data-tchmi-type="TcHmi.Controls.System.TcHmiUserControlHost" data-tchmi-height="83" data-tchmi-height-unit="px" data-tchmi-left="506" data-tchmi-left-unit="px" data-tchmi-target-user-control="UserControl/ucValve.usercontrol" data-tchmi-top="278" data-tchmi-top-unit="px" data-tchmi-width="97" data-tchmi-width-unit="px" data-tchmi-zindex="1">
+</div>
+<div id="UcPump_2" data-tchmi-type="TcHmi.Controls.System.TcHmiUserControlHost" data-tchmi-height="106" data-tchmi-height-unit="px" data-tchmi-left="621" data-tchmi-left-unit="px" data-tchmi-target-user-control="UserControl/ucPump.usercontrol" data-tchmi-top="267" data-tchmi-top-unit="px" data-tchmi-width="100" data-tchmi-width-unit="px">
+</div>
+<div id="UcValve_6" data-tchmi-type="TcHmi.Controls.System.TcHmiUserControlHost" data-tchmi-height="83" data-tchmi-height-unit="px" data-tchmi-left="739" data-tchmi-left-unit="px" data-tchmi-target-user-control="UserControl/ucValve.usercontrol" data-tchmi-top="261" data-tchmi-top-unit="px" data-tchmi-width="97" data-tchmi-width-unit="px" data-tchmi-zindex="1">
+</div>
+<div id="UcDisplay" data-tchmi-type="TcHmi.Controls.System.TcHmiUserControlHost" data-tchmi-height="75" data-tchmi-height-unit="px" data-tchmi-left="229" data-tchmi-left-unit="px" data-tchmi-target-user-control="UserControl/ucDisplay.usercontrol" data-tchmi-top="143" data-tchmi-top-unit="px" data-tchmi-width="130" data-tchmi-width-unit="px" data-tchmi-name="XV-xxxx">
+</div>
+<div id="UcDisplay_1" data-tchmi-type="TcHmi.Controls.System.TcHmiUserControlHost" data-tchmi-height="76" data-tchmi-height-unit="px" data-tchmi-left="667" data-tchmi-left-unit="px" data-tchmi-target-user-control="UserControl/ucDisplay.usercontrol" data-tchmi-top="143" data-tchmi-top-unit="px" data-tchmi-width="132" data-tchmi-width-unit="px" data-tchmi-name="XV-xxxx">
+</div>
+<div id="TcHmiStateImage_2" data-tchmi-type="TcHmi.Controls.Beckhoff.TcHmiStateImage" data-tchmi-height="45" data-tchmi-height-unit="px" data-tchmi-left="36" data-tchmi-left-unit="px" data-tchmi-top="301" data-tchmi-top-unit="px" data-tchmi-width="60" data-tchmi-width-unit="px" data-tchmi-fallback-image="Images/Lines/Line_Type_01_OFF.png">
+
+<script data-tchmi-target-attribute="data-tchmi-state-list" type="application/json">
+[
+  {
+    "state": 0.0,
+    "stateIcon": "Images/Lines/Line_Type_01.png"
+  },
+  {
+    "state": 1.0,
+    "stateIcon": "Images/Lines/Line_Type_01_ON.png"
+  }
+]
+</script>
+</div>
+<div id="TcHmiStateImage_3" data-tchmi-type="TcHmi.Controls.Beckhoff.TcHmiStateImage" data-tchmi-height="10" data-tchmi-height-unit="px" data-tchmi-left="138" data-tchmi-left-unit="px" data-tchmi-top="317" data-tchmi-top-unit="px" data-tchmi-width="75" data-tchmi-width-unit="px" data-tchmi-fallback-image="Images/Lines/Line_Type_02_OFF.png">
+
+<script data-tchmi-target-attribute="data-tchmi-state-list" type="application/json">
+[
+  {
+    "state": 0.0,
+    "stateIcon": "Images/Lines/Line_Type_02_OFF.png"
+  },
+  {
+    "state": 1.0,
+    "stateIcon": "Images/Lines/Line_Type_02_ON.png"
+  }
+]
+</script>
+</div>
+<div id="TcHmiStateImage_4" data-tchmi-type="TcHmi.Controls.Beckhoff.TcHmiStateImage" data-tchmi-height="10" data-tchmi-height-unit="px" data-tchmi-left="255" data-tchmi-left-unit="px" data-tchmi-top="303" data-tchmi-top-unit="px" data-tchmi-width="75" data-tchmi-width-unit="px" data-tchmi-fallback-image="Images/Lines/Line_Type_03_OFF.png">
+
+<script data-tchmi-target-attribute="data-tchmi-state-list" type="application/json">
+[
+  {
+    "state": 0,
+    "stateIcon": "Images/Lines/Line_Type_03_OFF.png"
+  },
+  {
+    "state": 1,
+    "stateIcon": "Images/Lines/Line_Type_03_ON.png"
+  }
+]
+</script>
+</div>
+<div id="TcHmiLine" data-tchmi-type="TcHmi.Controls.Beckhoff.TcHmiLine" data-tchmi-height="100" data-tchmi-height-unit="px" data-tchmi-left="289" data-tchmi-left-unit="px" data-tchmi-top="215" data-tchmi-top-unit="px" data-tchmi-width="10" data-tchmi-width-unit="px" data-tchmi-x2="5" data-tchmi-y2="90" data-tchmi-x1="5" data-tchmi-stroke-thickness="3">
+</div>
+<div id="TcHmiStateImage_5" data-tchmi-type="TcHmi.Controls.Beckhoff.TcHmiStateImage" data-tchmi-height="10" data-tchmi-height-unit="px" data-tchmi-left="579" data-tchmi-left-unit="px" data-tchmi-top="316" data-tchmi-top-unit="px" data-tchmi-width="75" data-tchmi-width-unit="px" data-tchmi-fallback-image="Images/Lines/Line_Type_02_OFF.png">
+<script data-tchmi-target-attribute="data-tchmi-state-list" type="application/json">
+[
+  {
+    "state": 0.0,
+    "stateIcon": "Images/Lines/Line_Type_02_OFF.png"
+  },
+  {
+    "state": 1.0,
+    "stateIcon": "Images/Lines/Line_Type_02_ON.png"
+  }
+]
+</script>
+</div>
+<div id="TcHmiStateImage_6" data-tchmi-type="TcHmi.Controls.Beckhoff.TcHmiStateImage" data-tchmi-height="45" data-tchmi-height-unit="px" data-tchmi-left="372" data-tchmi-left-unit="px" data-tchmi-top="287" data-tchmi-top-unit="px" data-tchmi-width="60" data-tchmi-width-unit="px" data-tchmi-fallback-image="Images/Lines/Line_Type_04_OFF.png">
+<script data-tchmi-target-attribute="data-tchmi-state-list" type="application/json">
+[
+  {
+    "state": 0.0,
+    "stateIcon": "Images/Lines/Line_Type_04_OFF.png"
+  },
+  {
+    "state": 1.0,
+    "stateIcon": "Images/Lines/Line_Type_04_ON.png"
+  }
+]
+</script>
+</div>
+<div id="TcHmiStateImage_7" data-tchmi-type="TcHmi.Controls.Beckhoff.TcHmiStateImage" data-tchmi-height="45" data-tchmi-height-unit="px" data-tchmi-left="476" data-tchmi-left-unit="px" data-tchmi-top="300" data-tchmi-top-unit="px" data-tchmi-width="60" data-tchmi-width-unit="px" data-tchmi-fallback-image="Images/Lines/Line_Type_01_OFF.png">
+<script data-tchmi-target-attribute="data-tchmi-state-list" type="application/json">
+[
+  {
+    "state": 0.0,
+    "stateIcon": "Images/Lines/Line_Type_01.png"
+  },
+  {
+    "state": 1.0,
+    "stateIcon": "Images/Lines/Line_Type_01_ON.png"
+  }
+]
+</script>
+</div>
+<div id="TcHmiStateImage_9" data-tchmi-type="TcHmi.Controls.Beckhoff.TcHmiStateImage" data-tchmi-height="45" data-tchmi-height-unit="px" data-tchmi-left="811" data-tchmi-left-unit="px" data-tchmi-top="284" data-tchmi-top-unit="px" data-tchmi-width="60" data-tchmi-width-unit="px" data-tchmi-fallback-image="Images/Lines/Line_Type_04_OFF.png">
+<script data-tchmi-target-attribute="data-tchmi-state-list" type="application/json">
+[
+  {
+    "state": 0.0,
+    "stateIcon": "Images/Lines/Line_Type_04_OFF.png"
+  },
+  {
+    "state": 1.0,
+    "stateIcon": "Images/Lines/Line_Type_04_ON.png"
+  }
+]
+</script>
+</div>
+<div id="TcHmiLine_1" data-tchmi-type="TcHmi.Controls.Beckhoff.TcHmiLine" data-tchmi-height="90" data-tchmi-height-unit="px" data-tchmi-left="727" data-tchmi-left-unit="px" data-tchmi-top="213" data-tchmi-top-unit="px" data-tchmi-width="10" data-tchmi-width-unit="px" data-tchmi-x2="5" data-tchmi-y2="90" data-tchmi-x1="5" data-tchmi-stroke-thickness="3">
+</div>
+<div id="TcHmiTextblock_4" data-tchmi-type="TcHmi.Controls.Beckhoff.TcHmiTextblock" data-tchmi-height="45" data-tchmi-height-unit="px" data-tchmi-left="15" data-tchmi-left-unit="px" data-tchmi-text="Grupo 1:" data-tchmi-top="55" data-tchmi-top-unit="px" data-tchmi-width="95" data-tchmi-width-unit="px" data-tchmi-word-wrap="true" data-tchmi-text-font-size="26" data-tchmi-text-font-weight="Bold" data-tchmi-text-vertical-alignment="Center">
+</div>
+<div id="TcHmiTextblock_5" data-tchmi-type="TcHmi.Controls.Beckhoff.TcHmiTextblock" data-tchmi-height="45" data-tchmi-height-unit="px" data-tchmi-left="123" data-tchmi-left-unit="px" data-tchmi-text="Água de Resfriamento" data-tchmi-top="55" data-tchmi-top-unit="px" data-tchmi-width="168" data-tchmi-width-unit="px" data-tchmi-word-wrap="true" data-tchmi-text-font-size="18" data-tchmi-text-font-weight="Normal" data-tchmi-text-horizontal-alignment="Left" data-tchmi-text-vertical-alignment="Center">
+</div>
+<div id="TcHmiRectangle_3" data-tchmi-type="TcHmi.Controls.Beckhoff.TcHmiRectangle" data-tchmi-height="319" data-tchmi-height-unit="px" data-tchmi-left="913" data-tchmi-left-unit="px" data-tchmi-top="99" data-tchmi-top-unit="px" data-tchmi-width="970" data-tchmi-width-unit="px" data-tchmi-zindex="0">
+<script data-tchmi-target-attribute="data-tchmi-border-style" type="application/json">
+{
+  "left": "Dashed",
+  "right": "Dashed",
+  "top": "Dashed",
+  "bottom": "Dashed"
+}
+</script>
+
+<script data-tchmi-target-attribute="data-tchmi-border-width" type="application/json">
+{
+  "left": 4,
+  "right": 4,
+  "top": 4,
+  "bottom": 4,
+  "leftUnit": "px",
+  "rightUnit": "px",
+  "topUnit": "px",
+  "bottomUnit": "px"
+}
+</script>
+
+<script data-tchmi-target-attribute="data-tchmi-background-image-padding" type="application/json">
+{
+  "left": 0,
+  "right": 0,
+  "top": 0,
+  "bottom": 0,
+  "leftUnit": "px",
+  "rightUnit": "px",
+  "topUnit": "px",
+  "bottomUnit": "px"
+}
+</script>
+</div>
+<div id="UcValve_7" data-tchmi-type="TcHmi.Controls.System.TcHmiUserControlHost" data-tchmi-height="83" data-tchmi-height-unit="px" data-tchmi-left="967" data-tchmi-left-unit="px" data-tchmi-target-user-control="UserControl/ucValve.usercontrol" data-tchmi-top="276" data-tchmi-top-unit="px" data-tchmi-width="97" data-tchmi-width-unit="px" data-tchmi-zindex="1">
+</div>
+<div id="UcPump_3" data-tchmi-type="TcHmi.Controls.System.TcHmiUserControlHost" data-tchmi-height="104" data-tchmi-height-unit="px" data-tchmi-left="1106" data-tchmi-left-unit="px" data-tchmi-target-user-control="UserControl/ucPump.usercontrol" data-tchmi-top="268" data-tchmi-top-unit="px" data-tchmi-width="100" data-tchmi-width-unit="px">
+</div>
+<div id="UcValve_8" data-tchmi-type="TcHmi.Controls.System.TcHmiUserControlHost" data-tchmi-height="83" data-tchmi-height-unit="px" data-tchmi-left="1248" data-tchmi-left-unit="px" data-tchmi-target-user-control="UserControl/ucValve.usercontrol" data-tchmi-top="263" data-tchmi-top-unit="px" data-tchmi-width="97" data-tchmi-width-unit="px" data-tchmi-zindex="1">
+</div>
+<div id="UcValve_9" data-tchmi-type="TcHmi.Controls.System.TcHmiUserControlHost" data-tchmi-height="83" data-tchmi-height-unit="px" data-tchmi-left="1443" data-tchmi-left-unit="px" data-tchmi-target-user-control="UserControl/ucValve.usercontrol" data-tchmi-top="276" data-tchmi-top-unit="px" data-tchmi-width="97" data-tchmi-width-unit="px" data-tchmi-zindex="1">
+</div>
+<div id="UcPump_4" data-tchmi-type="TcHmi.Controls.System.TcHmiUserControlHost" data-tchmi-height="106" data-tchmi-height-unit="px" data-tchmi-left="1582" data-tchmi-left-unit="px" data-tchmi-target-user-control="UserControl/ucPump.usercontrol" data-tchmi-top="266" data-tchmi-top-unit="px" data-tchmi-width="100" data-tchmi-width-unit="px">
+</div>
+<div id="UcValve_10" data-tchmi-type="TcHmi.Controls.System.TcHmiUserControlHost" data-tchmi-height="83" data-tchmi-height-unit="px" data-tchmi-left="1724" data-tchmi-left-unit="px" data-tchmi-target-user-control="UserControl/ucValve.usercontrol" data-tchmi-top="259" data-tchmi-top-unit="px" data-tchmi-width="97" data-tchmi-width-unit="px" data-tchmi-zindex="1">
+</div>
+<div id="UcDisplay_2" data-tchmi-type="TcHmi.Controls.System.TcHmiUserControlHost" data-tchmi-height="75" data-tchmi-height-unit="px" data-tchmi-left="1166" data-tchmi-left-unit="px" data-tchmi-target-user-control="UserControl/ucDisplay.usercontrol" data-tchmi-top="141" data-tchmi-top-unit="px" data-tchmi-width="130" data-tchmi-width-unit="px" data-tchmi-name="XV-xxxx">
+</div>
+<div id="UcDisplay_3" data-tchmi-type="TcHmi.Controls.System.TcHmiUserControlHost" data-tchmi-height="76" data-tchmi-height-unit="px" data-tchmi-left="1640" data-tchmi-left-unit="px" data-tchmi-target-user-control="UserControl/ucDisplay.usercontrol" data-tchmi-top="141" data-tchmi-top-unit="px" data-tchmi-width="132" data-tchmi-width-unit="px" data-tchmi-name="XV-xxxx">
+</div>
+<div id="TcHmiStateImage_10" data-tchmi-type="TcHmi.Controls.Beckhoff.TcHmiStateImage" data-tchmi-height="50" data-tchmi-height-unit="px" data-tchmi-left="935" data-tchmi-left-unit="px" data-tchmi-top="296" data-tchmi-top-unit="px" data-tchmi-width="64" data-tchmi-width-unit="px" data-tchmi-fallback-image="Images/Lines/Line_Type_01.png">
+<script data-tchmi-target-attribute="data-tchmi-state-list" type="application/json">
+[
+  {
+    "state": 0.0,
+    "stateIcon": "Images/Lines/Line_Type_01.png"
+  },
+  {
+    "state": 1.0,
+    "stateIcon": "Images/Lines/Line_Type_01_ON.png"
+  }
+]
+</script>
+</div>
+<div id="TcHmiStateImage_11" data-tchmi-type="TcHmi.Controls.Beckhoff.TcHmiStateImage" data-tchmi-height="10" data-tchmi-height-unit="px" data-tchmi-left="1039" data-tchmi-left-unit="px" data-tchmi-top="315" data-tchmi-top-unit="px" data-tchmi-width="97" data-tchmi-width-unit="px" data-tchmi-fallback-image="Images/Lines/Line_Type_02_OFF.png">
+<script data-tchmi-target-attribute="data-tchmi-state-list" type="application/json">
+[
+  {
+    "state": 0.0,
+    "stateIcon": "Images/Lines/Line_Type_02_OFF.png"
+  },
+  {
+    "state": 1.0,
+    "stateIcon": "Images/Lines/Line_Type_02_ON.png"
+  }
+]
+</script>
+</div>
+<div id="TcHmiStateImage_12" data-tchmi-type="TcHmi.Controls.Beckhoff.TcHmiStateImage" data-tchmi-height="10" data-tchmi-height-unit="px" data-tchmi-left="1179" data-tchmi-left-unit="px" data-tchmi-top="301" data-tchmi-top-unit="px" data-tchmi-width="99" data-tchmi-width-unit="px" data-tchmi-fallback-image="Images/Lines/Line_Type_03_OFF.png">
+<script data-tchmi-target-attribute="data-tchmi-state-list" type="application/json">
+[
+  {
+    "state": 0,
+    "stateIcon": "Images/Lines/Line_Type_03_OFF.png"
+  },
+  {
+    "state": 1,
+    "stateIcon": "Images/Lines/Line_Type_03_ON.png"
+  }
+]
+</script>
+</div>
+<div id="TcHmiLine_2" data-tchmi-type="TcHmi.Controls.Beckhoff.TcHmiLine" data-tchmi-height="100" data-tchmi-height-unit="px" data-tchmi-left="1225" data-tchmi-left-unit="px" data-tchmi-top="214" data-tchmi-top-unit="px" data-tchmi-width="10" data-tchmi-width-unit="px" data-tchmi-x2="5" data-tchmi-y2="90" data-tchmi-x1="5" data-tchmi-stroke-thickness="3">
+</div>
+<div id="TcHmiStateImage_13" data-tchmi-type="TcHmi.Controls.Beckhoff.TcHmiStateImage" data-tchmi-height="10" data-tchmi-height-unit="px" data-tchmi-left="1512" data-tchmi-left-unit="px" data-tchmi-top="314" data-tchmi-top-unit="px" data-tchmi-width="100" data-tchmi-width-unit="px" data-tchmi-fallback-image="Images/Lines/Line_Type_02_OFF.png">
+<script data-tchmi-target-attribute="data-tchmi-state-list" type="application/json">
+[
+  {
+    "state": 0.0,
+    "stateIcon": "Images/Lines/Line_Type_02_OFF.png"
+  },
+  {
+    "state": 1.0,
+    "stateIcon": "Images/Lines/Line_Type_02_ON.png"
+  }
+]
+</script>
+</div>
+<div id="TcHmiStateImage_14" data-tchmi-type="TcHmi.Controls.Beckhoff.TcHmiStateImage" data-tchmi-height="50" data-tchmi-height-unit="px" data-tchmi-left="1319" data-tchmi-left-unit="px" data-tchmi-top="283" data-tchmi-top-unit="px" data-tchmi-width="64" data-tchmi-width-unit="px" data-tchmi-fallback-image="Images/Lines/Line_Type_04.png">
+<script data-tchmi-target-attribute="data-tchmi-state-list" type="application/json">
+[
+  {
+    "state": 0.0,
+    "stateIcon": "Images/Lines/Line_Type_04_OFF.png"
+  },
+  {
+    "state": 1.0,
+    "stateIcon": "Images/Lines/Line_Type_04_ON.png"
+  }
+]
+</script>
+</div>
+<div id="TcHmiStateImage_15" data-tchmi-type="TcHmi.Controls.Beckhoff.TcHmiStateImage" data-tchmi-height="50" data-tchmi-height-unit="px" data-tchmi-left="1409" data-tchmi-left-unit="px" data-tchmi-top="296" data-tchmi-top-unit="px" data-tchmi-width="64" data-tchmi-width-unit="px" data-tchmi-fallback-image="Images/Lines/Line_Type_01_OFF.png">
+<script data-tchmi-target-attribute="data-tchmi-state-list" type="application/json">
+[
+  {
+    "state": 0.0,
+    "stateIcon": "Images/Lines/Line_Type_01.png"
+  },
+  {
+    "state": 1.0,
+    "stateIcon": "Images/Lines/Line_Type_01_ON.png"
+  }
+]
+</script>
+</div>
+<div id="TcHmiStateImage_17" data-tchmi-type="TcHmi.Controls.Beckhoff.TcHmiStateImage" data-tchmi-height="50" data-tchmi-height-unit="px" data-tchmi-left="1796" data-tchmi-left-unit="px" data-tchmi-top="279" data-tchmi-top-unit="px" data-tchmi-width="64" data-tchmi-width-unit="px" data-tchmi-fallback-image="Images/Lines/Line_Type_04_OFF.png">
+<script data-tchmi-target-attribute="data-tchmi-state-list" type="application/json">
+[
+  {
+    "state": 0.0,
+    "stateIcon": "Images/Lines/Line_Type_04_OFF.png"
+  },
+  {
+    "state": 1.0,
+    "stateIcon": "Images/Lines/Line_Type_04_ON.png"
+  }
+]
+</script>
+</div>
+<div id="TcHmiLine_3" data-tchmi-type="TcHmi.Controls.Beckhoff.TcHmiLine" data-tchmi-height="100" data-tchmi-height-unit="px" data-tchmi-left="1700" data-tchmi-left-unit="px" data-tchmi-top="213" data-tchmi-top-unit="px" data-tchmi-width="10" data-tchmi-width-unit="px" data-tchmi-x2="5" data-tchmi-y2="90" data-tchmi-x1="5" data-tchmi-stroke-thickness="3">
+</div>
+<div id="TcHmiTextblock_6" data-tchmi-type="TcHmi.Controls.Beckhoff.TcHmiTextblock" data-tchmi-height="45" data-tchmi-height-unit="px" data-tchmi-left="916" data-tchmi-left-unit="px" data-tchmi-text="Grupo 2:" data-tchmi-top="53" data-tchmi-top-unit="px" data-tchmi-width="95" data-tchmi-width-unit="px" data-tchmi-word-wrap="true" data-tchmi-text-font-size="26" data-tchmi-text-font-weight="Bold" data-tchmi-text-vertical-alignment="Center">
+</div>
+<div id="TcHmiTextblock_7" data-tchmi-type="TcHmi.Controls.Beckhoff.TcHmiTextblock" data-tchmi-height="45" data-tchmi-height-unit="px" data-tchmi-left="1024" data-tchmi-left-unit="px" data-tchmi-text="Gás Inerte" data-tchmi-top="53" data-tchmi-top-unit="px" data-tchmi-width="167" data-tchmi-width-unit="px" data-tchmi-word-wrap="true" data-tchmi-text-font-size="18" data-tchmi-text-font-weight="Normal" data-tchmi-text-horizontal-alignment="Left" data-tchmi-text-vertical-alignment="Center">
+</div>
+<div id="TcHmiStateImage_18" data-tchmi-type="TcHmi.Controls.Beckhoff.TcHmiStateImage" data-tchmi-height="10" data-tchmi-height-unit="px" data-tchmi-left="694" data-tchmi-left-unit="px" data-tchmi-top="301" data-tchmi-top-unit="px" data-tchmi-width="75" data-tchmi-width-unit="px" data-tchmi-fallback-image="Images/Lines/Line_Type_03_OFF.png">
+<script data-tchmi-target-attribute="data-tchmi-state-list" type="application/json">
+[
+  {
+    "state": 0,
+    "stateIcon": "Images/Lines/Line_Type_03_OFF.png"
+  },
+  {
+    "state": 1,
+    "stateIcon": "Images/Lines/Line_Type_03_ON.png"
+  }
+]
+</script>
+</div>
+<div id="TcHmiStateImage_19" data-tchmi-type="TcHmi.Controls.Beckhoff.TcHmiStateImage" data-tchmi-height="10" data-tchmi-height-unit="px" data-tchmi-left="1656" data-tchmi-left-unit="px" data-tchmi-top="300" data-tchmi-top-unit="px" data-tchmi-width="99" data-tchmi-width-unit="px" data-tchmi-fallback-image="Images/Lines/Line_Type_03_OFF.png">
+<script data-tchmi-target-attribute="data-tchmi-state-list" type="application/json">
+[
+  {
+    "state": 0,
+    "stateIcon": "Images/Lines/Line_Type_03_OFF.png"
+  },
+  {
+    "state": 1,
+    "stateIcon": "Images/Lines/Line_Type_03_ON.png"
+  }
+]
+</script>
+</div>
+</div>

@@ -1,0 +1,332 @@
+<?xml version="1.0"?>
+<TcSmProject xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://www.beckhoff.com/schemas/2012/07/TcSmProject" TcSmVersion="1.0" TcVersion="3.1.4024.42">
+	<DataTypes>
+		<DataType>
+			<Name GUID="{7FD93A79-3DC4-2619-8F7F-0DB05FA45656}" AutoDeleteType="true">ST_AuxiliaryPowerValues</Name>
+			<BitSize>64</BitSize>
+			<SubItem>
+				<Name>index</Name>
+				<Type GUID="{18071995-0000-0000-0000-000000000002}">USINT</Type>
+				<Comment><![CDATA[Indice]]></Comment>
+				<BitSize>8</BitSize>
+				<BitOffs>0</BitOffs>
+			</SubItem>
+			<SubItem>
+				<Name>channel</Name>
+				<Type GUID="{18071995-0000-0000-0000-000000000002}">USINT</Type>
+				<Comment><![CDATA[Canal]]></Comment>
+				<BitSize>8</BitSize>
+				<BitOffs>8</BitOffs>
+			</SubItem>
+			<SubItem>
+				<Name>value</Name>
+				<Type GUID="{18071995-0000-0000-0000-000000000009}">DINT</Type>
+				<Comment><![CDATA[Valor]]></Comment>
+				<BitSize>32</BitSize>
+				<BitOffs>32</BitOffs>
+			</SubItem>
+		</DataType>
+		<DataType>
+			<Name GUID="{7D8AE510-170C-B230-8167-C18D29837FAB}" AutoDeleteType="true">ST_Channel</Name>
+			<BitSize>8</BitSize>
+			<SubItem>
+				<Name>OverVoltage</Name>
+				<Type GUID="{18071995-0000-0000-0000-000000000010}">BIT</Type>
+				<BitSize>1</BitSize>
+				<BitOffs>0</BitOffs>
+			</SubItem>
+			<SubItem>
+				<Name>UnderVoltage</Name>
+				<Type GUID="{18071995-0000-0000-0000-000000000010}">BIT</Type>
+				<BitSize>1</BitSize>
+				<BitOffs>1</BitOffs>
+			</SubItem>
+			<SubItem>
+				<Name>OverCurrent</Name>
+				<Type GUID="{18071995-0000-0000-0000-000000000010}">BIT</Type>
+				<BitSize>1</BitSize>
+				<BitOffs>2</BitOffs>
+			</SubItem>
+			<SubItem>
+				<Name>PhaseSeqCW</Name>
+				<Type GUID="{18071995-0000-0000-0000-000000000010}">BIT</Type>
+				<BitSize>1</BitSize>
+				<BitOffs>3</BitOffs>
+			</SubItem>
+			<SubItem>
+				<Name>PhaseSeqCCW</Name>
+				<Type GUID="{18071995-0000-0000-0000-000000000010}">BIT</Type>
+				<BitSize>1</BitSize>
+				<BitOffs>4</BitOffs>
+			</SubItem>
+			<SubItem>
+				<Name>MissingZeroCrossing</Name>
+				<Type GUID="{18071995-0000-0000-0000-000000000010}">BIT</Type>
+				<BitSize>1</BitSize>
+				<BitOffs>5</BitOffs>
+			</SubItem>
+			<SubItem>
+				<Name>TxPdoState</Name>
+				<Type GUID="{18071995-0000-0000-0000-000000000010}">BIT</Type>
+				<BitSize>1</BitSize>
+				<BitOffs>6</BitOffs>
+			</SubItem>
+			<SubItem>
+				<Name>TxPdoToggle</Name>
+				<Type GUID="{18071995-0000-0000-0000-000000000010}">BIT</Type>
+				<BitSize>1</BitSize>
+				<BitOffs>7</BitOffs>
+			</SubItem>
+		</DataType>
+		<DataType>
+			<Name GUID="{58FF1DE1-5779-8847-C85D-A7B3EE260ABB}" AutoDeleteType="true">ST_PowerMeter</Name>
+			<BitSize>192</BitSize>
+			<SubItem>
+				<Name>Status</Name>
+				<Type GUID="{7D8AE510-170C-B230-8167-C18D29837FAB}">ST_Channel</Type>
+				<Comment><![CDATA[Todos os status de cada canal (Overvoltage, UnderVoltage, Overcurrent, PhaseSequenceZero Crossing...)]]></Comment>
+				<BitSize>8</BitSize>
+				<BitOffs>0</BitOffs>
+			</SubItem>
+			<SubItem>
+				<Name>Current</Name>
+				<Type GUID="{18071995-0000-0000-0000-000000000009}">DINT</Type>
+				<BitSize>32</BitSize>
+				<BitOffs>32</BitOffs>
+			</SubItem>
+			<SubItem>
+				<Name>Voltage</Name>
+				<Type GUID="{18071995-0000-0000-0000-000000000009}">DINT</Type>
+				<BitSize>32</BitSize>
+				<BitOffs>64</BitOffs>
+			</SubItem>
+			<SubItem>
+				<Name>ActivePower</Name>
+				<Type GUID="{18071995-0000-0000-0000-000000000009}">DINT</Type>
+				<BitSize>32</BitSize>
+				<BitOffs>96</BitOffs>
+			</SubItem>
+			<SubItem>
+				<Name>Index</Name>
+				<Type GUID="{18071995-0000-0000-0000-000000000002}">USINT</Type>
+				<BitSize>8</BitSize>
+				<BitOffs>128</BitOffs>
+			</SubItem>
+			<SubItem>
+				<Name>VariantValue</Name>
+				<Type GUID="{18071995-0000-0000-0000-000000000009}">DINT</Type>
+				<BitSize>32</BitSize>
+				<BitOffs>160</BitOffs>
+			</SubItem>
+		</DataType>
+	</DataTypes>
+	<Project ProjectGUID="{431F48E7-DB60-4E6D-8379-90AFBF2E467C}" Target64Bit="true" ShowHideConfigurations="#x106">
+		<System>
+			<Licenses>
+				<Target>
+					<ManualSelect>{92583661-35AE-45CE-BD4F-C35BFE16F07E}</ManualSelect>
+					<ManualSelect>{2752D285-16AD-4E89-AE6C-80E72784D264}</ManualSelect>
+				</Target>
+			</Licenses>
+			<Tasks>
+				<Task Id="3" Priority="20" CycleTime="100000" AmsPort="350" AdtTasks="true">
+					<Name>PlcTask</Name>
+				</Task>
+			</Tasks>
+		</System>
+		<Motion>
+			<NC File="NC.xti"/>
+		</Motion>
+		<Plc>
+			<Project GUID="{B4BA19E1-48F0-406E-BB34-137C786E5775}" Name="PLC01" PrjFilePath="PLC01\PLC01.plcproj" TmcFilePath="PLC01\PLC01.tmc" ReloadTmc="true" AmsPort="851" FileArchiveSettings="#x000e" SymbolicMapping="true">
+				<Instance Id="#x08502000" TcSmClass="TComPlcObjDef" KeepUnrestoredLinks="2" TmcPath="PLC01\PLC01.tmc" TmcHash="{B9C2ADCE-DCF6-E248-8013-75AABFBF7121}">
+					<Name>PLC01 Instance</Name>
+					<CLSID ClassFactory="TcPlc30">{08500001-0000-0000-F000-000000000064}</CLSID>
+					<Vars VarGrpType="1">
+						<Name>PlcTask Inputs</Name>
+						<Var>
+							<Name>PRG_PowerMeter.fbAuxPower.power</Name>
+							<Type GUID="{7FD93A79-3DC4-2619-8F7F-0DB05FA45656}">ST_AuxiliaryPowerValues</Type>
+						</Var>
+						<Var>
+							<Name>PRG_PowerMeter.EL3433_Ch1</Name>
+							<Comment><![CDATA[ Estruturas com link com o IO EL3433]]></Comment>
+							<Type GUID="{58FF1DE1-5779-8847-C85D-A7B3EE260ABB}">ST_PowerMeter</Type>
+						</Var>
+						<Var>
+							<Name>PRG_PowerMeter.EL3433_Ch2</Name>
+							<Type GUID="{58FF1DE1-5779-8847-C85D-A7B3EE260ABB}">ST_PowerMeter</Type>
+						</Var>
+						<Var>
+							<Name>PRG_PowerMeter.EL3433_Ch3</Name>
+							<Type GUID="{58FF1DE1-5779-8847-C85D-A7B3EE260ABB}">ST_PowerMeter</Type>
+						</Var>
+					</Vars>
+					<Vars VarGrpType="2" AreaNo="1">
+						<Name>PlcTask Outputs</Name>
+						<Var>
+							<Name>PRG_PowerMeter.fbAuxPower.iChannel</Name>
+							<Type>USINT</Type>
+						</Var>
+						<Var>
+							<Name>PRG_PowerMeter.fbAuxPower.iIndex</Name>
+							<Type>USINT</Type>
+						</Var>
+						<Var>
+							<Name>PRG_PowerMeter.Ch1_OutIndex</Name>
+							<Comment><![CDATA[ Variavel Index do terminal EL3433 ]]></Comment>
+							<Type>USINT</Type>
+						</Var>
+						<Var>
+							<Name>PRG_PowerMeter.Ch2_OutIndex</Name>
+							<Type>USINT</Type>
+						</Var>
+						<Var>
+							<Name>PRG_PowerMeter.Ch3_OutIndex</Name>
+							<Type>USINT</Type>
+						</Var>
+						<Var>
+							<Name>PRG_PowerMeter.ChAux_OutIndex</Name>
+							<Type>USINT</Type>
+						</Var>
+					</Vars>
+					<UnrestoredVarLinks ImportTime="2023-06-26T10:47:02">
+						<OwnerA Name="InputDst" Prefix="TIPC^PLC01^PLC01 Instance" Type="1">
+							<OwnerB Name="TIID^Device 3 (EtherCAT)^Term 1 (EK1100)^Term 6 (EL3433)">
+								<Link VarA="GVL_IO.EL3433.MDP5001_340_341_Input^MDP5001_340_Active_power" TypeA="DINT" InOutA="0" ParentTypeA="MDP5001_340_341_I_F468310F" GuidA="{18071995-0000-0000-0000-000000000009}" VarB="PM Inputs Channel 1^Active power" RestoreInfo="ANotFound"/>
+								<Link VarA="GVL_IO.EL3433.MDP5001_340_341_Input^MDP5001_340_Current" TypeA="DINT" InOutA="0" ParentTypeA="MDP5001_340_341_I_F468310F" GuidA="{18071995-0000-0000-0000-000000000009}" VarB="PM Inputs Channel 1^Current" RestoreInfo="ANotFound"/>
+								<Link VarA="GVL_IO.EL3433.MDP5001_340_341_Input^MDP5001_340_Index" TypeA="USINT" InOutA="0" ParentTypeA="MDP5001_340_341_I_F468310F" GuidA="{18071995-0000-0000-0000-000000000002}" VarB="PM Inputs Channel 1^Index" RestoreInfo="ANotFound"/>
+								<Link VarA="GVL_IO.EL3433.MDP5001_340_341_Input^MDP5001_340_STATUS" TypeA="STATUS_4398B2B6_Plc" InOutA="0" ParentTypeA="MDP5001_340_341_I_F468310F" GuidA="{BE38650E-9415-7463-8BD2-CA32259109BB}" VarB="PM Inputs Channel 1^STATUS" RestoreInfo="ANotFound"/>
+								<Link VarA="GVL_IO.EL3433.MDP5001_340_341_Input^MDP5001_340_Variant_value" TypeA="DINT" InOutA="0" ParentTypeA="MDP5001_340_341_I_F468310F" GuidA="{18071995-0000-0000-0000-000000000009}" VarB="PM Inputs Channel 1^Variant value" RestoreInfo="ANotFound"/>
+								<Link VarA="GVL_IO.EL3433.MDP5001_340_341_Input^MDP5001_340_Voltage" TypeA="DINT" InOutA="0" ParentTypeA="MDP5001_340_341_I_F468310F" GuidA="{18071995-0000-0000-0000-000000000009}" VarB="PM Inputs Channel 1^Voltage" RestoreInfo="ANotFound"/>
+							</OwnerB>
+						</OwnerA>
+						<OwnerA Name="OutputSrc" Prefix="TIPC^PLC01^PLC01 Instance" Type="2">
+							<OwnerB Name="TIID^Device 3 (EtherCAT)^Term 1 (EK1100)^Term 6 (EL3433)">
+								<Link VarA="GVL_IO.EL3433.MDP5001_340_341_Output^MDP5001_340_Index" TypeA="USINT" InOutA="1" ParentTypeA="MDP5001_340_341_O_F468310F" GuidA="{18071995-0000-0000-0000-000000000002}" VarB="PM Outputs Channel 1^Index" RestoreInfo="ANotFound"/>
+							</OwnerB>
+						</OwnerA>
+					</UnrestoredVarLinks>
+					<UnrestoredVarLinks ImportTime="2023-06-26T12:23:58">
+						<OwnerA Name="InputDst" Prefix="TIPC^PLC01^PLC01 Instance" Type="1">
+							<OwnerB Name="TIID^Device 3 (EtherCAT)^Term 1 (EK1100)^Term 6 (EL3433)">
+								<Link VarA="GVL_IO.EL3433.Channel_01_ActivePower" TypeA="DINT" InOutA="0" GuidA="{18071995-0000-0000-0000-000000000009}" VarB="PM Inputs Channel 1^Active power" RestoreInfo="ANotFound"/>
+								<Link VarA="GVL_IO.EL3433.Channel_01_Current" TypeA="DINT" InOutA="0" GuidA="{18071995-0000-0000-0000-000000000009}" VarB="PM Inputs Channel 1^Current" RestoreInfo="ANotFound"/>
+								<Link VarA="GVL_IO.EL3433.Channel_01_Index" TypeA="USINT" InOutA="0" GuidA="{18071995-0000-0000-0000-000000000002}" VarB="PM Inputs Channel 1^Index" RestoreInfo="ANotFound"/>
+								<Link VarA="GVL_IO.EL3433.Channel_01_Status^MissingZeroCrossing" TypeA="BOOL" InOutA="0" ParentTypeA="ST_EL3433_Status" GuidA="{18071995-0000-0000-0000-000000000030}" VarB="PM Inputs Channel 1^STATUS^Missing zero crossing" Size="1" RestoreInfo="ANotFound"/>
+								<Link VarA="GVL_IO.EL3433.Channel_01_Status^OVercurrent" TypeA="BOOL" InOutA="0" ParentTypeA="ST_EL3433_Status" GuidA="{18071995-0000-0000-0000-000000000030}" VarB="PM Inputs Channel 1^STATUS^Overcurrent" Size="1" RestoreInfo="ANotFound"/>
+								<Link VarA="GVL_IO.EL3433.Channel_01_Status^OverVoltage" TypeA="BOOL" InOutA="0" ParentTypeA="ST_EL3433_Status" GuidA="{18071995-0000-0000-0000-000000000030}" VarB="PM Inputs Channel 1^STATUS^Overvoltage" Size="1" RestoreInfo="ANotFound"/>
+								<Link VarA="GVL_IO.EL3433.Channel_01_Status^PhaseSequence_Cw" TypeA="BOOL" InOutA="0" ParentTypeA="ST_EL3433_Status" GuidA="{18071995-0000-0000-0000-000000000030}" VarB="PM Inputs Channel 1^STATUS^Phase sequence cw" Size="1" RestoreInfo="ANotFound"/>
+								<Link VarA="GVL_IO.EL3433.Channel_01_Status^PhaseSequence_ccw" TypeA="BOOL" InOutA="0" ParentTypeA="ST_EL3433_Status" GuidA="{18071995-0000-0000-0000-000000000030}" VarB="PM Inputs Channel 1^STATUS^Phase sequence ccw" Size="1" RestoreInfo="ANotFound"/>
+								<Link VarA="GVL_IO.EL3433.Channel_01_Status^TxPDO_State" TypeA="BOOL" InOutA="0" ParentTypeA="ST_EL3433_Status" GuidA="{18071995-0000-0000-0000-000000000030}" VarB="PM Inputs Channel 1^STATUS^TxPDO State" Size="1" RestoreInfo="ANotFound"/>
+								<Link VarA="GVL_IO.EL3433.Channel_01_Status^TxPDO_Toggle" TypeA="BOOL" InOutA="0" ParentTypeA="ST_EL3433_Status" GuidA="{18071995-0000-0000-0000-000000000030}" VarB="PM Inputs Channel 1^STATUS^TxPDO Toggle" Size="1" RestoreInfo="ANotFound"/>
+								<Link VarA="GVL_IO.EL3433.Channel_01_Status^UnderVoltage" TypeA="BOOL" InOutA="0" ParentTypeA="ST_EL3433_Status" GuidA="{18071995-0000-0000-0000-000000000030}" VarB="PM Inputs Channel 1^STATUS^Undervoltage" Size="1" RestoreInfo="ANotFound"/>
+								<Link VarA="GVL_IO.EL3433.Channel_01_VariantValue" TypeA="DINT" InOutA="0" GuidA="{18071995-0000-0000-0000-000000000009}" VarB="PM Inputs Channel 1^Variant value" RestoreInfo="ANotFound"/>
+								<Link VarA="GVL_IO.EL3433.Channel_01_Voltage" TypeA="DINT" InOutA="0" GuidA="{18071995-0000-0000-0000-000000000009}" VarB="PM Inputs Channel 1^Voltage" RestoreInfo="ANotFound"/>
+								<Link VarA="GVL_IO.EL3433.Channel_02_ActivePower" TypeA="DINT" InOutA="0" GuidA="{18071995-0000-0000-0000-000000000009}" VarB="PM Inputs Channel 2^Active power" RestoreInfo="ANotFound"/>
+								<Link VarA="GVL_IO.EL3433.Channel_02_Current" TypeA="DINT" InOutA="0" GuidA="{18071995-0000-0000-0000-000000000009}" VarB="PM Inputs Channel 2^Current" RestoreInfo="ANotFound"/>
+								<Link VarA="GVL_IO.EL3433.Channel_02_Index" TypeA="USINT" InOutA="0" GuidA="{18071995-0000-0000-0000-000000000002}" VarB="PM Inputs Channel 2^Index" RestoreInfo="ANotFound"/>
+								<Link VarA="GVL_IO.EL3433.Channel_02_Status^MissingZeroCrossing" TypeA="BOOL" InOutA="0" ParentTypeA="ST_EL3433_Status" GuidA="{18071995-0000-0000-0000-000000000030}" VarB="PM Inputs Channel 2^STATUS^Missing zero crossing" Size="1" RestoreInfo="ANotFound"/>
+								<Link VarA="GVL_IO.EL3433.Channel_02_Status^OVercurrent" TypeA="BOOL" InOutA="0" ParentTypeA="ST_EL3433_Status" GuidA="{18071995-0000-0000-0000-000000000030}" VarB="PM Inputs Channel 2^STATUS^Overcurrent" Size="1" RestoreInfo="ANotFound"/>
+								<Link VarA="GVL_IO.EL3433.Channel_02_Status^OverVoltage" TypeA="BOOL" InOutA="0" ParentTypeA="ST_EL3433_Status" GuidA="{18071995-0000-0000-0000-000000000030}" VarB="PM Inputs Channel 2^STATUS^Overvoltage" Size="1" RestoreInfo="ANotFound"/>
+								<Link VarA="GVL_IO.EL3433.Channel_02_Status^PhaseSequence_Cw" TypeA="BOOL" InOutA="0" ParentTypeA="ST_EL3433_Status" GuidA="{18071995-0000-0000-0000-000000000030}" VarB="PM Inputs Channel 2^STATUS^Phase sequence cw" Size="1" RestoreInfo="ANotFound"/>
+								<Link VarA="GVL_IO.EL3433.Channel_02_Status^PhaseSequence_ccw" TypeA="BOOL" InOutA="0" ParentTypeA="ST_EL3433_Status" GuidA="{18071995-0000-0000-0000-000000000030}" VarB="PM Inputs Channel 2^STATUS^Phase sequence ccw" Size="1" RestoreInfo="ANotFound"/>
+								<Link VarA="GVL_IO.EL3433.Channel_02_Status^TxPDO_State" TypeA="BOOL" InOutA="0" ParentTypeA="ST_EL3433_Status" GuidA="{18071995-0000-0000-0000-000000000030}" VarB="PM Inputs Channel 2^STATUS^TxPDO State" Size="1" RestoreInfo="ANotFound"/>
+								<Link VarA="GVL_IO.EL3433.Channel_02_Status^TxPDO_Toggle" TypeA="BOOL" InOutA="0" ParentTypeA="ST_EL3433_Status" GuidA="{18071995-0000-0000-0000-000000000030}" VarB="PM Inputs Channel 2^STATUS^TxPDO Toggle" Size="1" RestoreInfo="ANotFound"/>
+								<Link VarA="GVL_IO.EL3433.Channel_02_Status^UnderVoltage" TypeA="BOOL" InOutA="0" ParentTypeA="ST_EL3433_Status" GuidA="{18071995-0000-0000-0000-000000000030}" VarB="PM Inputs Channel 2^STATUS^Undervoltage" Size="1" RestoreInfo="ANotFound"/>
+								<Link VarA="GVL_IO.EL3433.Channel_02_VariantValue" TypeA="DINT" InOutA="0" GuidA="{18071995-0000-0000-0000-000000000009}" VarB="PM Inputs Channel 2^Variant value" RestoreInfo="ANotFound"/>
+								<Link VarA="GVL_IO.EL3433.Channel_02_Voltage" TypeA="DINT" InOutA="0" GuidA="{18071995-0000-0000-0000-000000000009}" VarB="PM Inputs Channel 2^Voltage" RestoreInfo="ANotFound"/>
+								<Link VarA="GVL_IO.EL3433.Channel_03_ActivePower" TypeA="DINT" InOutA="0" GuidA="{18071995-0000-0000-0000-000000000009}" VarB="PM Inputs Channel 3^Active power" RestoreInfo="ANotFound"/>
+								<Link VarA="GVL_IO.EL3433.Channel_03_Current" TypeA="DINT" InOutA="0" GuidA="{18071995-0000-0000-0000-000000000009}" VarB="PM Inputs Channel 3^Current" RestoreInfo="ANotFound"/>
+								<Link VarA="GVL_IO.EL3433.Channel_03_Index" TypeA="USINT" InOutA="0" GuidA="{18071995-0000-0000-0000-000000000002}" VarB="PM Inputs Channel 3^Index" RestoreInfo="ANotFound"/>
+								<Link VarA="GVL_IO.EL3433.Channel_03_Status^MissingZeroCrossing" TypeA="BOOL" InOutA="0" ParentTypeA="ST_EL3433_Status" GuidA="{18071995-0000-0000-0000-000000000030}" VarB="PM Inputs Channel 3^STATUS^Missing zero crossing" Size="1" RestoreInfo="ANotFound"/>
+								<Link VarA="GVL_IO.EL3433.Channel_03_Status^OVercurrent" TypeA="BOOL" InOutA="0" ParentTypeA="ST_EL3433_Status" GuidA="{18071995-0000-0000-0000-000000000030}" VarB="PM Inputs Channel 3^STATUS^Overcurrent" Size="1" RestoreInfo="ANotFound"/>
+								<Link VarA="GVL_IO.EL3433.Channel_03_Status^OverVoltage" TypeA="BOOL" InOutA="0" ParentTypeA="ST_EL3433_Status" GuidA="{18071995-0000-0000-0000-000000000030}" VarB="PM Inputs Channel 3^STATUS^Overvoltage" Size="1" RestoreInfo="ANotFound"/>
+								<Link VarA="GVL_IO.EL3433.Channel_03_Status^PhaseSequence_Cw" TypeA="BOOL" InOutA="0" ParentTypeA="ST_EL3433_Status" GuidA="{18071995-0000-0000-0000-000000000030}" VarB="PM Inputs Channel 3^STATUS^Phase sequence cw" Size="1" RestoreInfo="ANotFound"/>
+								<Link VarA="GVL_IO.EL3433.Channel_03_Status^PhaseSequence_ccw" TypeA="BOOL" InOutA="0" ParentTypeA="ST_EL3433_Status" GuidA="{18071995-0000-0000-0000-000000000030}" VarB="PM Inputs Channel 3^STATUS^Phase sequence ccw" Size="1" RestoreInfo="ANotFound"/>
+								<Link VarA="GVL_IO.EL3433.Channel_03_Status^TxPDO_State" TypeA="BOOL" InOutA="0" ParentTypeA="ST_EL3433_Status" GuidA="{18071995-0000-0000-0000-000000000030}" VarB="PM Inputs Channel 3^STATUS^TxPDO State" Size="1" RestoreInfo="ANotFound"/>
+								<Link VarA="GVL_IO.EL3433.Channel_03_Status^TxPDO_Toggle" TypeA="BOOL" InOutA="0" ParentTypeA="ST_EL3433_Status" GuidA="{18071995-0000-0000-0000-000000000030}" VarB="PM Inputs Channel 3^STATUS^TxPDO Toggle" Size="1" RestoreInfo="ANotFound"/>
+								<Link VarA="GVL_IO.EL3433.Channel_03_Status^UnderVoltage" TypeA="BOOL" InOutA="0" ParentTypeA="ST_EL3433_Status" GuidA="{18071995-0000-0000-0000-000000000030}" VarB="PM Inputs Channel 3^STATUS^Undervoltage" Size="1" RestoreInfo="ANotFound"/>
+								<Link VarA="GVL_IO.EL3433.Channel_03_VariantValue" TypeA="DINT" InOutA="0" GuidA="{18071995-0000-0000-0000-000000000009}" VarB="PM Inputs Channel 3^Variant value" RestoreInfo="ANotFound"/>
+								<Link VarA="GVL_IO.EL3433.Channel_03_Voltage" TypeA="DINT" InOutA="0" GuidA="{18071995-0000-0000-0000-000000000009}" VarB="PM Inputs Channel 3^Voltage" RestoreInfo="ANotFound"/>
+								<Link VarA="GVL_IO.EL3433.Channel_Auxiliary_Channel" TypeA="USINT" InOutA="0" GuidA="{18071995-0000-0000-0000-000000000002}" VarB="PM Inputs Auxiliary^Channel" RestoreInfo="ANotFound"/>
+								<Link VarA="GVL_IO.EL3433.Channel_Auxiliary_Index" TypeA="USINT" InOutA="0" GuidA="{18071995-0000-0000-0000-000000000002}" VarB="PM Inputs Auxiliary^Index" RestoreInfo="ANotFound"/>
+								<Link VarA="GVL_IO.EL3433.Channel_Auxiliary_Status^OVercurrent" TypeA="BOOL" InOutA="0" ParentTypeA="ST_EL3433_Status" GuidA="{18071995-0000-0000-0000-000000000030}" VarB="PM Inputs Auxiliary^STATUS^Overcurrent" Size="1" RestoreInfo="ANotFound"/>
+								<Link VarA="GVL_IO.EL3433.Channel_Auxiliary_Status^TxPDO_State" TypeA="BOOL" InOutA="0" ParentTypeA="ST_EL3433_Status" GuidA="{18071995-0000-0000-0000-000000000030}" VarB="PM Inputs Auxiliary^STATUS^TxPDO State" Size="1" RestoreInfo="ANotFound"/>
+								<Link VarA="GVL_IO.EL3433.Channel_Auxiliary_Status^TxPDO_Toggle" TypeA="BOOL" InOutA="0" ParentTypeA="ST_EL3433_Status" GuidA="{18071995-0000-0000-0000-000000000030}" VarB="PM Inputs Auxiliary^STATUS^TxPDO Toggle" Size="1" RestoreInfo="ANotFound"/>
+								<Link VarA="GVL_IO.EL3433.Channel_Auxiliary_Value" TypeA="DINT" InOutA="0" GuidA="{18071995-0000-0000-0000-000000000009}" VarB="PM Inputs Auxiliary^Value" RestoreInfo="ANotFound"/>
+							</OwnerB>
+						</OwnerA>
+					</UnrestoredVarLinks>
+					<Contexts>
+						<Context>
+							<Id NeedCalleeCall="true">0</Id>
+							<Name>PlcTask</Name>
+							<ManualConfig>
+								<OTCID>#x02010030</OTCID>
+							</ManualConfig>
+							<Priority>20</Priority>
+							<CycleTime>10000000</CycleTime>
+						</Context>
+					</Contexts>
+					<TaskPouOids>
+						<TaskPouOid Prio="20" OTCID="#x08502001"/>
+					</TaskPouOids>
+				</Instance>
+			</Project>
+		</Plc>
+		<Io>
+			<Device File="Device 3 (EtherCAT).xti" Id="3"/>
+		</Io>
+	</Project>
+	<Mappings>
+		<MappingInfo Identifier="{00000000-2001-0850-0020-500830000403}" Id="#x02030010"/>
+		<OwnerA Name="TIPC^PLC01^PLC01 Instance">
+			<OwnerB Name="TIID^Device 3 (EtherCAT)^Term 1 (EK1100)^Term 6 (EL3433)">
+				<Link VarA="PlcTask Inputs^PRG_PowerMeter.EL3433_Ch1^ActivePower" VarB="PM Inputs Channel 1^Active power"/>
+				<Link VarA="PlcTask Inputs^PRG_PowerMeter.EL3433_Ch1^Current" VarB="PM Inputs Channel 1^Current"/>
+				<Link VarA="PlcTask Inputs^PRG_PowerMeter.EL3433_Ch1^Index" VarB="PM Inputs Channel 1^Index"/>
+				<Link VarA="PlcTask Inputs^PRG_PowerMeter.EL3433_Ch1^Status^MissingZeroCrossing" VarB="PM Inputs Channel 1^STATUS^Missing zero crossing"/>
+				<Link VarA="PlcTask Inputs^PRG_PowerMeter.EL3433_Ch1^Status^OverCurrent" VarB="PM Inputs Channel 1^STATUS^Overcurrent"/>
+				<Link VarA="PlcTask Inputs^PRG_PowerMeter.EL3433_Ch1^Status^OverVoltage" VarB="PM Inputs Channel 1^STATUS^Overvoltage"/>
+				<Link VarA="PlcTask Inputs^PRG_PowerMeter.EL3433_Ch1^Status^PhaseSeqCCW" VarB="PM Inputs Channel 1^STATUS^Phase sequence ccw"/>
+				<Link VarA="PlcTask Inputs^PRG_PowerMeter.EL3433_Ch1^Status^PhaseSeqCW" VarB="PM Inputs Channel 1^STATUS^Phase sequence cw"/>
+				<Link VarA="PlcTask Inputs^PRG_PowerMeter.EL3433_Ch1^Status^TxPdoState" VarB="PM Inputs Channel 1^STATUS^TxPDO State"/>
+				<Link VarA="PlcTask Inputs^PRG_PowerMeter.EL3433_Ch1^Status^TxPdoToggle" VarB="PM Inputs Channel 1^STATUS^TxPDO Toggle"/>
+				<Link VarA="PlcTask Inputs^PRG_PowerMeter.EL3433_Ch1^Status^UnderVoltage" VarB="PM Inputs Channel 1^STATUS^Undervoltage"/>
+				<Link VarA="PlcTask Inputs^PRG_PowerMeter.EL3433_Ch1^VariantValue" VarB="PM Inputs Channel 1^Variant value"/>
+				<Link VarA="PlcTask Inputs^PRG_PowerMeter.EL3433_Ch1^Voltage" VarB="PM Inputs Channel 1^Voltage"/>
+				<Link VarA="PlcTask Inputs^PRG_PowerMeter.EL3433_Ch2^ActivePower" VarB="PM Inputs Channel 2^Active power"/>
+				<Link VarA="PlcTask Inputs^PRG_PowerMeter.EL3433_Ch2^Current" VarB="PM Inputs Channel 2^Current"/>
+				<Link VarA="PlcTask Inputs^PRG_PowerMeter.EL3433_Ch2^Index" VarB="PM Inputs Channel 2^Index"/>
+				<Link VarA="PlcTask Inputs^PRG_PowerMeter.EL3433_Ch2^Status^MissingZeroCrossing" VarB="PM Inputs Channel 2^STATUS^Missing zero crossing"/>
+				<Link VarA="PlcTask Inputs^PRG_PowerMeter.EL3433_Ch2^Status^OverCurrent" VarB="PM Inputs Channel 2^STATUS^Overcurrent"/>
+				<Link VarA="PlcTask Inputs^PRG_PowerMeter.EL3433_Ch2^Status^OverVoltage" VarB="PM Inputs Channel 2^STATUS^Overvoltage"/>
+				<Link VarA="PlcTask Inputs^PRG_PowerMeter.EL3433_Ch2^Status^PhaseSeqCCW" VarB="PM Inputs Channel 2^STATUS^Phase sequence ccw"/>
+				<Link VarA="PlcTask Inputs^PRG_PowerMeter.EL3433_Ch2^Status^PhaseSeqCW" VarB="PM Inputs Channel 2^STATUS^Phase sequence cw"/>
+				<Link VarA="PlcTask Inputs^PRG_PowerMeter.EL3433_Ch2^Status^TxPdoState" VarB="PM Inputs Channel 2^STATUS^TxPDO State"/>
+				<Link VarA="PlcTask Inputs^PRG_PowerMeter.EL3433_Ch2^Status^TxPdoToggle" VarB="PM Inputs Channel 2^STATUS^TxPDO Toggle"/>
+				<Link VarA="PlcTask Inputs^PRG_PowerMeter.EL3433_Ch2^Status^UnderVoltage" VarB="PM Inputs Channel 2^STATUS^Undervoltage"/>
+				<Link VarA="PlcTask Inputs^PRG_PowerMeter.EL3433_Ch2^VariantValue" VarB="PM Inputs Channel 2^Variant value"/>
+				<Link VarA="PlcTask Inputs^PRG_PowerMeter.EL3433_Ch2^Voltage" VarB="PM Inputs Channel 2^Voltage"/>
+				<Link VarA="PlcTask Inputs^PRG_PowerMeter.EL3433_Ch3^ActivePower" VarB="PM Inputs Channel 3^Active power"/>
+				<Link VarA="PlcTask Inputs^PRG_PowerMeter.EL3433_Ch3^Current" VarB="PM Inputs Channel 3^Current"/>
+				<Link VarA="PlcTask Inputs^PRG_PowerMeter.EL3433_Ch3^Index" VarB="PM Inputs Channel 3^Index"/>
+				<Link VarA="PlcTask Inputs^PRG_PowerMeter.EL3433_Ch3^Status^MissingZeroCrossing" VarB="PM Inputs Channel 3^STATUS^Missing zero crossing"/>
+				<Link VarA="PlcTask Inputs^PRG_PowerMeter.EL3433_Ch3^Status^OverCurrent" VarB="PM Inputs Channel 3^STATUS^Overcurrent"/>
+				<Link VarA="PlcTask Inputs^PRG_PowerMeter.EL3433_Ch3^Status^OverVoltage" VarB="PM Inputs Channel 3^STATUS^Overvoltage"/>
+				<Link VarA="PlcTask Inputs^PRG_PowerMeter.EL3433_Ch3^Status^PhaseSeqCCW" VarB="PM Inputs Channel 3^STATUS^Phase sequence ccw"/>
+				<Link VarA="PlcTask Inputs^PRG_PowerMeter.EL3433_Ch3^Status^PhaseSeqCW" VarB="PM Inputs Channel 3^STATUS^Phase sequence cw"/>
+				<Link VarA="PlcTask Inputs^PRG_PowerMeter.EL3433_Ch3^Status^TxPdoState" VarB="PM Inputs Channel 3^STATUS^TxPDO State"/>
+				<Link VarA="PlcTask Inputs^PRG_PowerMeter.EL3433_Ch3^Status^TxPdoToggle" VarB="PM Inputs Channel 3^STATUS^TxPDO Toggle"/>
+				<Link VarA="PlcTask Inputs^PRG_PowerMeter.EL3433_Ch3^Status^UnderVoltage" VarB="PM Inputs Channel 3^STATUS^Undervoltage"/>
+				<Link VarA="PlcTask Inputs^PRG_PowerMeter.EL3433_Ch3^VariantValue" VarB="PM Inputs Channel 3^Variant value"/>
+				<Link VarA="PlcTask Inputs^PRG_PowerMeter.EL3433_Ch3^Voltage" VarB="PM Inputs Channel 3^Voltage"/>
+				<Link VarA="PlcTask Outputs^PRG_PowerMeter.Ch1_OutIndex" VarB="PM Outputs Channel 1^Index"/>
+				<Link VarA="PlcTask Outputs^PRG_PowerMeter.Ch2_OutIndex" VarB="PM Outputs Channel 2^Index"/>
+				<Link VarA="PlcTask Outputs^PRG_PowerMeter.Ch3_OutIndex" VarB="PM Outputs Channel 3^Index"/>
+				<Link VarA="PlcTask Outputs^PRG_PowerMeter.ChAux_OutIndex" VarB="PM Outputs Auxiliary^Index"/>
+			</OwnerB>
+		</OwnerA>
+	</Mappings>
+</TcSmProject>

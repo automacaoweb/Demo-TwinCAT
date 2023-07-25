@@ -1,0 +1,48 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.12">
+  <POU Name="FC_ConcatStr" Id="{f9010cd0-7815-4596-90b7-6a5f0d855bea}" SpecialFunc="None">
+    <Declaration><![CDATA[FUNCTION FC_ConcatStr : STRING(1500)
+VAR_INPUT
+	str1 : STRING(1500);
+	str2 : STRING(1500);
+END_VAR
+VAR
+	size1 : INT;
+	size2 : INT;
+	i : INT;
+	j : INT;
+END_VAR
+]]></Declaration>
+    <Implementation>
+      <ST><![CDATA[size1 := 0;
+size2 := 0;
+FOR i := 0 TO 1500 BY 1 DO
+	IF str1[i] = 0 THEN
+		EXIT;
+	ELSE
+		size1 := size1 + 1;
+	END_IF
+END_FOR
+
+FOR i := 0 TO 1500 BY 1 DO
+	IF str2[i] = 0 THEN
+		EXIT;
+	ELSE
+		size2 := size2 + 1;
+	END_IF
+END_FOR
+
+FOR i := 0 TO 1500 BY 1 DO
+	IF i < size1 THEN
+		FC_ConcatStr[i] := str1[i];
+	ELSIF i < size1 + size2 THEN
+		FC_ConcatStr[i] := str2[i - size1];
+	ELSE
+		FC_ConcatStr[i] := 0;
+	END_IF;
+END_FOR
+
+]]></ST>
+    </Implementation>
+  </POU>
+</TcPlcObject>

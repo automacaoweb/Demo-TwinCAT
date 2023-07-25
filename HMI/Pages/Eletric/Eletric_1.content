@@ -1,0 +1,9 @@
+<div id="Eletric1" data-tchmi-type="TcHmi.Controls.System.TcHmiContent" data-tchmi-top="0" data-tchmi-left="0" data-tchmi-width="100" data-tchmi-height="100" data-tchmi-width-unit="%" data-tchmi-height-unit="%">
+
+<div id="UcValve_1" data-tchmi-type="TcHmi.Controls.System.TcHmiUserControlHost" data-tchmi-height="98" data-tchmi-height-unit="px" data-tchmi-left="89" data-tchmi-left-unit="px" data-tchmi-target-user-control="UserControl/ucValve.usercontrol" data-tchmi-top="182" data-tchmi-top-unit="px" data-tchmi-width="114" data-tchmi-width-unit="px">
+</div>
+<div id="UcPump" data-tchmi-type="TcHmi.Controls.System.TcHmiUserControlHost" data-tchmi-height="140" data-tchmi-height-unit="px" data-tchmi-left="359" data-tchmi-left-unit="px" data-tchmi-target-user-control="UserControl/ucPump.usercontrol" data-tchmi-top="182" data-tchmi-top-unit="px" data-tchmi-width="172" data-tchmi-width-unit="px">
+</div>
+<div id="UcValve_2" data-tchmi-type="TcHmi.Controls.System.TcHmiUserControlHost" data-tchmi-height="133" data-tchmi-height-unit="px" data-tchmi-left="651" data-tchmi-left-unit="px" data-tchmi-target-user-control="UserControl/ucValve.usercontrol" data-tchmi-top="146" data-tchmi-top-unit="px" data-tchmi-width="174" data-tchmi-width-unit="px">
+</div>
+</div>

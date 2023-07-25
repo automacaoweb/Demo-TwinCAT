@@ -1,0 +1,156 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.12">
+  <POU Name="FB_SQL_ReadPower" Id="{8fe8902a-fd66-444b-96dd-29df3f050cb1}" SpecialFunc="None">
+    <Declaration><![CDATA[FUNCTION_BLOCK FB_SQL_ReadPower
+VAR_INPUT
+	bExecute : BOOL;
+	sTableName : STRING;
+	sDateStart : STRING;
+	sDateEnd : STRING ;
+END_VAR
+VAR_OUTPUT
+	bDone : BOOL;
+	bBusy : BOOL;
+	bError : BOOL;
+	nRecords : UDINT;
+	DataRead : ARRAY[0..10000] OF ST_DatabasePower;
+END_VAR
+VAR
+	hDBID : UDINT 	:= 1;
+	fbSqlDatabase : FB_SQLDatabaseEvt(sNetID := '', tTimeout := T#180S);
+	fbSqlCommand : FB_SQLCommandEvt(sNetID := '', tTimeout := T#180S) ;
+    fbSqlResult : FB_SQLResultEvt(sNetID:='', tTimeout    := T#180S); 
+	sCommandSql  	: STRING (1500); //Comando SQL
+	bRead 			: BOOL;	
+	fbPulse : R_TRIG ;	
+	sDateStartAux : STRING ;	
+	sDateEndtAux : STRING ;	
+	nState: INT;
+	counter: INT;
+END_VAR
+]]></Declaration>
+    <Implementation>
+      <ST><![CDATA[// Tratamento da data e hora da STRING recebida da IHM
+//sDateStartAux := REPLACE(STR1:= sDateStart, STR2:= ' ', L:= 1, P:= 11);
+sDateStartAux := LEFT(sDateStart, 19);
+
+//sDateEndtAux := REPLACE(STR1:= sDateEnd, STR2:= ' ', L:= 1, P:= 11);
+sDateEndtAux := LEFT(sDateEnd, 19);
+		
+
+//Ejemplo comando SQL
+//'SELECT * FROM TB_PowerMeasure WHERE Timestamp BETWEEN $'2023-06-27 00:00:00$' AND $'2023-06-27 17:00:00$' '
+
+
+// Montagem do comando SQL		
+
+sCommandSql := 'SELECT * FROM TB_PowerMeasure WHERE Timestamp BETWEEN $'';
+sCommandSql := FC_ConcatStr(sCommandSql, sDateStartAux) ;
+sCommandSql := FC_ConcatStr(sCommandSql, '$' AND $'') ;	
+sCommandSql := FC_ConcatStr(sCommandSql, sDateEndtAux) ;	
+sCommandSql := FC_ConcatStr(sCommandSql, '$'') ;	
+
+
+//sCommandSql := 'SELECT TOP (1) *  FROM [DB_PowerMeasure].[dbo].[TB_PowerMeasure]';
+
+
+// Pulso para comando SQL
+fbPulse(CLK:= bExecute, Q=> );
+IF fbPulse.Q = TRUE THEN
+	nState := 10 ;
+END_IF
+
+counter := counter + 1 ;
+
+CASE nState OF
+
+	0:
+	
+	IF fbSqlDatabase.Disconnect() THEN
+		IF fbSqlDatabase.bError THEN
+			nState := 255;
+		ELSE
+			nState := 10;
+   		END_IF
+	END_IF
+	
+	
+	1: 
+	
+	;
+	
+	
+(* CONECTAR AO BANCO / CONNECT TO DATABASE / *)
+	10:
+	
+	IF fbSqlDatabase.Connect(hDBID) THEN
+		IF fbSqlDatabase.bError THEN
+			nState := 250; 
+		ELSE
+			nState := 20; 
+		END_IF
+	END_IF
+	
+	20:	
+	IF fbSqlDatabase.CreateCmd(ADR(fbSqlCommand)) THEN
+		IF fbSqlDatabase.bError THEN
+			nState := 251; 
+		ELSE
+			nState := 30; 
+		END_IF
+	END_IF	
+
+	
+	30:
+	IF fbSqlCommand.ExecuteDataReturn(ADR(sCommandSql), SIZEOF(sCommandSql), ADR(fbSqlResult)) THEN
+		IF fbSQLCommand.bError THEN
+			nState := 252; 
+		ELSE
+			nState := 40; 
+		END_IF
+	END_IF	
+	
+	40:
+	IF fbSqlResult.Read(0, 10000, ADR(DataRead), SIZEOF(DataRead), FALSE, TRUE) THEN
+		IF fbSqlResult.bError THEN
+			nState := 253; 
+		ELSE
+			nState := 50; 
+		END_IF
+	END_IF
+	
+	50:
+	
+	fbSqlResult.Release();
+	
+	IF fbSqlResult.bError THEN
+		nState := 254 ;
+	ELSE
+		nState := 60;	
+	END_IF
+
+	
+	60: 	
+	fbSqlResult.Release();	
+	
+	IF fbSqlDatabase.Disconnect() THEN
+		IF fbSqlDatabase.bError THEN
+			nState := 255;
+		ELSE
+			nState := 0;
+   		END_IF
+	END_IF
+
+250: ;
+251: ;
+252: ;
+253: ;
+254: ;
+255: ;
+	
+END_CASE
+
+]]></ST>
+    </Implementation>
+  </POU>
+</TcPlcObject>

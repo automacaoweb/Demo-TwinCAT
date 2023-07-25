@@ -1,0 +1,103 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.12">
+  <POU Name="PRG_Database" Id="{f6eb7001-f6e0-4a84-bd70-abb19520f376}" SpecialFunc="None">
+    <Declaration><![CDATA[PROGRAM PRG_Database
+VAR
+(* CREATE TABLE *)	
+	fbCreateTable : FB_SQL_ExecuteComandWithoutReturn ;
+	bCreateDatabase : BOOL ;
+	bDatabaseCreated : BOOL ;
+	sSqlCmdCreateTable : STRING(512) ;
+	sError : STRING ;
+	
+(* CREATE CSV *)	
+	fbSqlToCsv : FB_SQL_ExecuteComandWithoutReturn ;	
+	sSqlCmdSqlToCsv : STRING(512) ;
+	
+(* WRITE TO DATABASE *)	
+	fbSQLWrite_01 : FB_SQL_WritePower ;
+	fbSQLWrite_02 : FB_SQL_WritePower ;
+	fbSQLWrite_03 : FB_SQL_WritePower ;	
+	bEnableWrite: BOOL := TRUE ;
+	
+(* READ FROM DATABASE *)	
+	fbSQLRead_01 : FB_SQL_ReadPower ;
+	
+
+	bExecuteRead: BOOL;
+
+
+END_VAR
+]]></Declaration>
+    <Implementation>
+      <ST><![CDATA[(**********************************************************************************)	
+(***************** CRIAR TABELA / CREATE TABLE / CREAR TABLA **********************)
+
+sSqlCmdCreateTable := 'CREATE TABLE [TB_PowerMeter] ([ID] bigint IDENTITY(1,1), [Timestamp] datetime, [Name] varchar(50), [ActivePower] float, [ApparentPower] float, [ReactivePower] float, [Voltage] float, [Current] float, [Cosphi] float, [Frequency] float, [AngleBetweenPhase1] float, [Energy] float, [EnergyNegative] float)';
+
+fbCreateTable(bExecute:= bCreateDatabase, 
+			  hDBID:= 1, 
+			  sCommandSql:= sSqlCmdCreateTable, 
+			  bCommandOk=> bDatabaseCreated,
+			  sError => sError);
+
+			  
+(**********************************************************************************)			  
+(*  ESCREVER NO BANCO DE DADOS A CADA 10S / WRITE TO DATABASE EVERY 10S/ ESCRIBIR EN LA BASE DE DATOS A CADA 10S *)
+
+fbSQLWrite_01(
+	sTableName:= 'TB_PowerMeter', 
+	sNameLoad:= 'EL3433 CH1', 
+	stEnergy:= GVL.EL3433_Ch1_PowerConverted, 
+	bEnableWriteDatabase:= bEnableWrite, 
+	iTimeWriteDatabase:= 10);
+	
+fbSQLWrite_02(
+	sTableName:= 'TB_PowerMeter', 
+	sNameLoad:= 'EL3433 CH2', 
+	stEnergy:= GVL.EL3433_Ch2_PowerConverted, 
+	bEnableWriteDatabase:= bEnableWrite, 
+	iTimeWriteDatabase:= 10);
+
+fbSQLWrite_03(
+	sTableName:= 'TB_PowerMeter', 
+	sNameLoad:= 'EL3433 CH3', 
+	stEnergy:= GVL.EL3433_Ch3_PowerConverted, 
+	bEnableWriteDatabase:= bEnableWrite, 
+	iTimeWriteDatabase:= 10);	
+
+	
+	
+(**********************************************************************************)			
+(****** LER DO BANCO DE DADOS / READ FROM DATABASE / LEER DE LA BASE DE DATOS *****)	
+	
+
+GVL_HMI.DateStart:= '2023-07-25T16:08:14.020Z';
+GVL_HMI.DateEnd := '2023-07-25T16:12:14.020Z';
+
+fbSQLRead_01(
+	bExecute:= bExecuteRead, 
+	sTableName:= 'TB_PowerMeter', 
+	sDateStart:= GVL_HMI.DateStart, 
+	sDateEnd:= GVL_HMI.DateEnd, 
+	bDone=> , 
+	bBusy=> , 
+	bError=> , 
+	nRecords=> , 
+	DataRead=> );	
+	
+	
+	
+(**********************************************************************************)		
+(* GERAR CSV *)
+
+sSqlCmdSQLToCSV := 'DECLARE @SQLQuery AS NVARCHAR(200) 
+				DECLARE @FilePath AS NVARCHAR(200)  
+				SET @SQLQuery = $'SELECT * FROM [DB_PowerMeasure].[dbo].[TB_PowerMeter]$'
+				SET @FilePath = $'C:\temp\arquivo.csv$' 
+				SET @SQLQuery = $'bcp "$' + @SQLQuery + $'" queryout "$' + @FilePath + $'" -c -t, -T -S DOUGLASC-NB01\SQLEXPRESS$'  
+				EXEC xp_cmdshell @SQLQuery  ';
+	]]></ST>
+    </Implementation>
+  </POU>
+</TcPlcObject>

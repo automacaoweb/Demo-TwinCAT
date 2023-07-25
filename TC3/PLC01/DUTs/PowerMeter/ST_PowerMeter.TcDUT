@@ -1,0 +1,15 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.12">
+  <DUT Name="ST_PowerMeter" Id="{82904268-9a7d-4150-9152-d651be6fd5f2}">
+    <Declaration><![CDATA[TYPE ST_PowerMeter :
+	STRUCT
+		Status 			: ST_Channel ; 	//Todos os status de cada canal (Overvoltage, UnderVoltage, Overcurrent, PhaseSequenceZero Crossing...)
+		Current 		: DINT ; 		//
+		Voltage 		: DINT ; 		//
+		ActivePower 	: DINT ; 		//
+		Index 			: USINT ; 		//
+		VariantValue	: DINT ; 		//
+	END_STRUCT
+END_TYPE]]></Declaration>
+  </DUT>
+</TcPlcObject>

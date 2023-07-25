@@ -1,0 +1,47 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.12">
+  <POU Name="FB_Simulate_EL3433" Id="{1c87ae2a-c6d0-4592-9efe-495db53b7b60}" SpecialFunc="None">
+    <Declaration><![CDATA[FUNCTION_BLOCK FB_Simulate_EL3433
+VAR_INPUT
+	bExecute : BOOL ;
+END_VAR
+VAR_OUTPUT
+	Current			:LREAL	;	//Display the channel's current 
+	Voltage			:LREAL	;	//Display the channel's voltage
+	ActivePower		:LREAL	;	//Display the channel's active power
+	ApparentPower	:LREAL	;	//Potência aparente
+	ReactivePower	:LREAL	;	//potencia reativa
+	Energy			:LREAL	;	//Energia
+	Cosphi			:LREAL	;	//cosseno PHI
+	Frequency		:LREAL	;	//Display the channel's Frequency
+	EnergyNegative	:LREAL	;	//Energia (Negativa)
+	AngleBetweenPhase1	:LREAL	;	//Angulo entre essa fase e a fase 1
+END_VAR
+VAR
+    tCurrentTime: TIME;
+    rRandomValue: REAL;
+	fRandom : DRAND ;
+END_VAR
+]]></Declaration>
+    <Implementation>
+      <ST><![CDATA[
+   fRandom(Seed:= 1 , Num=> rRandomValue);  // Converte o tempo atual para milissegundos
+
+IF bExecute = TRUE THEN 
+
+	Current			:=	rRandomValue + 2;	//Display the channel's current 
+	Voltage			:=	rRandomValue + 379;	//Display the channel's voltage
+	Cosphi			:=	(rRandomValue + 81) * 0.01;		
+	ActivePower		:=	Voltage * Current * Cosphi;	//Display the channel's active power
+	ApparentPower	:=	Voltage * Current;	//Potência aparente
+	ReactivePower	:=	Voltage * Current * SQRT( 1 - Cosphi * Cosphi) ;	//potencia reativa
+	Energy			:=	rRandomValue * 10;	
+	Frequency		:=	rRandomValue + 59;	
+	EnergyNegative	:=	rRandomValue * 10;	
+	AngleBetweenPhase1	:=	rRandomValue + 60;	
+END_IF
+
+]]></ST>
+    </Implementation>
+  </POU>
+</TcPlcObject>

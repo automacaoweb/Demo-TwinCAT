@@ -1,0 +1,12 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.12">
+  <DUT Name="ST_Convert" Id="{9d6e813e-1e3b-448d-bdb8-9d97fdf1876f}">
+    <Declaration><![CDATA[TYPE ST_Convert :
+UNION
+	aWORD : ARRAY[0..10] OF INT ;
+	aREAL : ARRAY[0..5] OF REAL ;
+END_UNION
+END_TYPE
+]]></Declaration>
+  </DUT>
+</TcPlcObject>

@@ -1,0 +1,112 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.12">
+  <POU Name="FB_SQL_ReadWithData" Id="{f5a68f42-deac-42fe-90d4-7a9c8c00d18b}" SpecialFunc="None">
+    <Declaration><![CDATA[FUNCTION_BLOCK FB_SQL_ReadWithData
+VAR_INPUT
+	bExecute : BOOL ;	
+	hDBID : UDINT 	:= 1;
+	sSqlCommand: STRING(1000);	
+END_VAR
+VAR_OUTPUT
+	aData : ARRAY[0..10000] OF ST_DatabasePower ;
+END_VAR
+VAR
+	fbSqlDatabase : FB_SQLDatabaseEvt(sNetID := '', tTimeout := T#180S);
+	fbSqlCommand : FB_SQLCommandEvt(sNetID := '', tTimeout := T#180S) ;
+    fbSqlResult : FB_SQLResultEvt(sNetID:='', tTimeout    := T#180S); 
+	fbPulse : R_TRIG ;	
+	sDateStartAux : STRING ;	
+	sDateEndtAux : STRING ;	
+	nState: INT;
+		
+END_VAR
+]]></Declaration>
+    <Implementation>
+      <ST><![CDATA[(* Pulso de uma varredura *)
+fbPulse(CLK:= bExecute, Q=> );
+
+IF fbPulse.Q THEN
+	nState := 10 ;
+END_IF
+	
+CASE nState OF
+
+0:
+//Iddle
+;
+
+10:
+
+IF fbSqlDatabase.Connect(hDBID) THEN
+	IF fbSqlDatabase.bError THEN
+		nState := 250; 
+	ELSE
+		nState := 20; 
+	END_IF
+END_IF
+
+20:	
+IF fbSqlDatabase.CreateCmd(ADR(fbSqlCommand)) THEN
+	IF fbSqlDatabase.bError THEN
+		nState := 251; 
+	ELSE
+		nState := 30; 
+	END_IF
+END_IF	
+
+
+30:
+
+IF fbSqlCommand.ExecuteDataReturn(pSQLCmd:= ADR(sSqlCommand), cbSQLCmd:= SIZEOF(sSqlCommand), pSQLDBResult:= ADR(aData) ) THEN
+
+
+	IF fbSQLCommand.bError THEN
+		nState := 252; 
+	ELSE
+		nState := 40; 
+	END_IF
+END_IF	
+
+
+40:
+
+IF fbSqlResult.Read(nStartIndex:= 1, nRecordCount:= 1000, pData:= ADR(aData), cbData:= SIZEOF(aData), bWithVerifying:= FALSE , bDataRelease:= TRUE) THEN
+	IF fbSqlResult.bError THEN
+        nState := 253; 
+    ELSE
+        nState := 50; 
+    END_IF
+END_IF
+
+
+50:
+
+ IF fbSqlResult.Release() THEN
+	IF fbSqlResult.bError THEN
+		nState := 254 ;
+	ELSE
+		nState := 60;	
+	END_IF
+END_IF
+
+60: 	
+
+IF fbSqlDatabase.Disconnect() THEN
+	IF fbSqlDatabase.bError THEN
+		nState := 255;
+	ELSE
+		nState := 0;
+	END_IF
+END_IF
+
+250: ;
+251: ;
+252: ;
+253: ;
+254: ;
+255: ;
+	
+END_CASE]]></ST>
+    </Implementation>
+  </POU>
+</TcPlcObject>

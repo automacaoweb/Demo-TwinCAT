@@ -1,0 +1,23 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.12">
+  <DUT Name="ST_DatabasePower" Id="{c03727db-cef8-4833-8023-6143a5cd33a9}">
+    <Declaration><![CDATA[TYPE ST_DatabasePower :
+STRUCT
+	ID 					: T_ULARGE_INTEGER  ;	//IDENTITY
+	Timestamp 			: DATE_AND_TIME ;		//TIMESTAMP
+	Name 				: STRING(50) ;			//NAME OF LOAD
+	ActivePower 		: LREAL ;				//ACTIVE POWER
+	ApparentPower 		: LREAL ;				//APARENT POWER
+	ReactivePower 		: LREAL ;				//REACTIVE POWER
+	Voltage 			: LREAL ;				//VOLTAGE
+	Current 			: LREAL ;				//CURRENT
+	Cosphi				: LREAL	;				//COSENO PHI
+	Frequency			: LREAL	;				//FREQUENCY
+	AngleBetweenPhase1	: LREAL	;				//ANGLE BETWEEN FASE 1	
+	Energy 				: LREAL ;				//POSITIVE ENERGY
+	EnergyNegative		: LREAL	;				//NEGATIVE ENERGY
+END_STRUCT
+END_TYPE
+]]></Declaration>
+  </DUT>
+</TcPlcObject>

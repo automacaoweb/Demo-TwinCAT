@@ -1,0 +1,68 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.12">
+  <POU Name="PRG_PowerMeter" Id="{bb2846a7-a013-4e21-87f2-6d0f706e76a6}" SpecialFunc="None">
+    <Declaration><![CDATA[PROGRAM PRG_PowerMeter
+VAR	
+
+(* Seleciona vaores REAIS do EL3433 ou Simulados *)
+	bSelectValues : BOOL ;
+
+(* Bloco para simulacao de valores do EL3433 *)
+	fbPowerL1Simulate : FB_Simulate_EL3433 ;
+	fbPowerL2Simulate : FB_Simulate_EL3433 ;
+	fbPowerL3Simulate : FB_Simulate_EL3433 ;
+
+(* Blocos de funcao para cada canal do terminal EL3433 REAL *)	
+	fbPowerL1 : FB_PowerMeter ; //Bloco para extratir os dados do cartão
+	fbPowerL2 : FB_PowerMeter ; //Bloco para extratir os dados do cartão
+	fbPowerL3 : FB_PowerMeter ; //Bloco para extratir os dados do cartão
+	fbAuxPower : FB_MeasureAuxPhasePower ; //	
+	
+(* Estruturas com link com o IO EL3433*)
+	EL3433_Ch1 AT %I* : ST_PowerMeter ;
+	EL3433_Ch2 AT %I* : ST_PowerMeter ;
+	EL3433_Ch3 AT %I* : ST_PowerMeter ;	
+
+(* Variavel Index do terminal EL3433 *)
+	Ch1_OutIndex AT %Q*: USINT := 0 ;
+	Ch2_OutIndex AT %Q*: USINT := 0 ;
+	Ch3_OutIndex AT %Q*: USINT := 0 ;
+	ChAux_OutIndex AT %Q*: USINT := 0 ;	
+	
+
+	stConvertedAuxChn : ST_AuxConvertedMeasure; //	
+	
+END_VAR
+]]></Declaration>
+    <Implementation>
+      <ST><![CDATA[
+IF bSelectValues = FALSE THEN
+	
+	fbPowerL1Simulate(
+		bExecute:= TRUE, 
+		Current=> GVL.EL3433_Ch1_PowerConverted.Current, 
+		Voltage=> GVL.EL3433_Ch1_PowerConverted.Voltage, 
+		ActivePower=> GVL.EL3433_Ch1_PowerConverted.ActivePower, 
+		ApparentPower=> GVL.EL3433_Ch1_PowerConverted.ApparentPower, 
+		ReactivePower=> GVL.EL3433_Ch1_PowerConverted.ReactivePower, 
+		Energy=> GVL.EL3433_Ch1_PowerConverted.Energy, 
+		Cosphi=> GVL.EL3433_Ch1_PowerConverted.Cosphi, 
+		Frequency=> GVL.EL3433_Ch1_PowerConverted.Frequency, 
+		EnergyNegative=> GVL.EL3433_Ch1_PowerConverted.EnergyNegative, 
+		AngleBetweenPhase1=> GVL.EL3433_Ch1_PowerConverted.AngleBetweenPhase1);
+		
+		
+		GVL.EL3433_Ch2_PowerConverted := GVL.EL3433_Ch1_PowerConverted;
+		GVL.EL3433_Ch3_PowerConverted := GVL.EL3433_Ch1_PowerConverted;
+ELSE
+
+	fbPowerL1(PowerInput:= EL3433_Ch1, PowerConverted=> GVL.EL3433_Ch1_PowerConverted, OutIndex=> Ch1_OutIndex);
+	fbPowerL2(PowerInput:= EL3433_Ch2, PowerConverted=> GVL.EL3433_Ch2_PowerConverted, OutIndex=> Ch2_OutIndex);
+	fbPowerL3(PowerInput:= EL3433_Ch3, PowerConverted=> GVL.EL3433_Ch3_PowerConverted, OutIndex=> Ch3_OutIndex);
+	fbAuxPower(convertedMeasure=> stConvertedAuxChn);
+
+
+END_IF]]></ST>
+    </Implementation>
+  </POU>
+</TcPlcObject>

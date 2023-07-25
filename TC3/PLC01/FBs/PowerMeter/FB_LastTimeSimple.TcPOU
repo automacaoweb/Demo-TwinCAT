@@ -1,0 +1,26 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.12">
+  <POU Name="FB_LastTimeSimple" Id="{3ffc0983-ab84-4b12-bb55-dcc66b2db0f0}" SpecialFunc="None">
+    <Declaration><![CDATA[FUNCTION_BLOCK FB_LastTimeSimple
+VAR_INPUT
+	bCountTime:BOOL;
+END_VAR
+VAR_OUTPUT
+	tLastTime:TIME;
+END_VAR
+VAR
+	t1:TON;
+	timeCountedF_TRIG:F_TRIG;
+	tActualtime:TIME;
+END_VAR]]></Declaration>
+    <Implementation>
+      <ST><![CDATA[IF timeCountedF_TRIG.Q THEN
+	tLastTime:=tActualtime;
+	tActualtime:=T#0S;
+END_IF
+timeCountedF_TRIG(CLK:=bCountTime);
+t1(IN:= bCountTime, PT:=T#1D);
+tActualtime:= MAX(tActualtime,t1.ET);]]></ST>
+    </Implementation>
+  </POU>
+</TcPlcObject>

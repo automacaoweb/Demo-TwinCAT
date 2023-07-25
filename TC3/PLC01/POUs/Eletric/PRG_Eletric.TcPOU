@@ -1,0 +1,12 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.12">
+  <POU Name="PRG_Eletric" Id="{bf5b672a-2b95-44a1-aca6-afef707f31cd}" SpecialFunc="None">
+    <Declaration><![CDATA[PROGRAM PRG_Eletric
+VAR
+END_VAR
+]]></Declaration>
+    <Implementation>
+      <ST><![CDATA[]]></ST>
+    </Implementation>
+  </POU>
+</TcPlcObject>

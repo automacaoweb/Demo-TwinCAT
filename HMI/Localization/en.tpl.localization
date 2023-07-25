@@ -1,0 +1,20 @@
+{
+  "$schema": "../../Packages/Beckhoff.TwinCAT.HMI.Framework.12.760.37/runtimes/native1.12-tchmi/Schema/LocalizationDescription.Schema.json",
+  "locale": "en",
+  "localizedText": {
+    "L_StartPage": "Start Page",
+    "L_BuildAutomation": "Build Automation",
+    "L_Localization": "Localization",
+    "L_Theme": "Theme",
+    "L_Settings": "Settings",
+    "L_Blackout": "Blackout",
+    "L_Process": "Process",
+    "L_Eletric1": "Eletric1",
+    "L_Dashboard": "Dashboard",
+    "L_Eletric": "Eletric",
+    "L_BuildAutomation1": "Build Automation1",
+    "L_Page": "Page",
+    "L_CleanRoom": "Clean Room",
+    "L_Utilities": "Utilities"
+  }
+}

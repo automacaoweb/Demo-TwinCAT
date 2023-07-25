@@ -1,0 +1,14 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.12">
+  <DUT Name="ST_Valve" Id="{e36f0eb4-020e-4006-b49e-aab3fe15a099}">
+    <Declaration><![CDATA[TYPE ST_Valve :
+STRUCT
+	status : BOOL ;
+	comando : BOOL ;
+	auto_manual : BOOL ;
+	time_feedback : INT ;
+END_STRUCT
+END_TYPE
+]]></Declaration>
+  </DUT>
+</TcPlcObject>

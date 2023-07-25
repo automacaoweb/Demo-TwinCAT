@@ -1,0 +1,57 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.12">
+  <POU Name="FB_PowerMeter" Id="{6b9c6faf-7770-46e2-90b1-28aef2b0fc9b}" SpecialFunc="None">
+    <Declaration><![CDATA[FUNCTION_BLOCK FB_PowerMeter
+VAR_INPUT
+	PowerInput : ST_PowerMeter;	
+END_VAR
+VAR_OUTPUT
+	PowerConverted : ST_ConvertedPower;	//Valores convertidos
+	OutIndex : USINT :=0;	
+END_VAR
+VAR
+	iAux:UINT:=0;
+END_VAR]]></Declaration>
+    <Implementation>
+      <ST><![CDATA[(* Conversao da corrente *)
+powerConverted.current:=DINT_TO_LREAL(PowerInput.current)*0.000001;
+
+(* Conversao da Tensao *)
+powerConverted.voltage:=DINT_TO_LREAL(PowerInput.voltage)*0.0001;
+
+(* Conversao da potencia ativa *)
+powerConverted.activePower:=DINT_TO_LREAL(PowerInput.activePower)*0.01;
+
+(* Conversoes diversas *)
+
+CASE PowerInput.index OF
+	0:
+		powerConverted.apparentPower := DINT_TO_LREAL(PowerInput.variantValue) * 0.01 ;
+	1:
+		powerConverted.reactivePower := DINT_TO_LREAL(PowerInput.variantValue) * 0.01 ;
+	2:
+		powerConverted.energy := DINT_TO_LREAL(PowerInput.variantValue) * 0.001;
+	3:
+		powerConverted.cosphi := DINT_TO_LREAL(PowerInput.variantValue) * 0.001;
+	4:
+		powerConverted.frequency := DINT_TO_LREAL(PowerInput.variantValue) * 0.1;
+	5:
+		powerConverted.energy := DINT_TO_LREAL(PowerInput.variantValue) * 0.001 ;
+	6:
+		powerConverted.AngleBetweenPhase1 := DINT_TO_LREAL(PowerInput.variantValue) * 0.01;
+END_CASE
+
+IF (PowerInput.index = OutIndex)THEN
+	iAux := iAux + 1 ;
+	IF iAux > 4 THEN
+		iAux := 0 ;
+		IF outIndex <= 6 THEN
+			outIndex := outIndex + 1 ;
+		ELSE
+			outIndex := 0 ;	
+		END_IF
+	END_IF	
+END_IF]]></ST>
+    </Implementation>
+  </POU>
+</TcPlcObject>

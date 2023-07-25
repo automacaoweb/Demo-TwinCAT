@@ -1,0 +1,101 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.12">
+  <POU Name="FB_SQL_ExecuteComandWithoutReturn" Id="{30d91114-26a6-4bd5-badc-cd3279717f8d}" SpecialFunc="None">
+    <Declaration><![CDATA[FUNCTION_BLOCK FB_SQL_ExecuteComandWithoutReturn
+VAR_INPUT
+	bExecute : BOOL ;
+	hDBID : UINT ;
+	sCommandSql : STRING(512) ;
+END_VAR
+VAR_OUTPUT
+	bCommandOk : BOOL ;
+	sError : STRING ;
+END_VAR
+VAR
+	fbSqlDatabase : FB_SQLDatabaseEvt(sNetID := '', tTimeout := T#10S);
+	fbSqlCommand : FB_SQLCommandEvt(sNetID := '', tTimeout := T#180S) ;
+    tcMessage    : I_TcMessage;	
+	nState : INT ;
+	fbPulse : R_TRIG ;
+END_VAR
+]]></Declaration>
+    <Implementation>
+      <ST><![CDATA[fbPulse(CLK:= bExecute, Q=> );
+
+IF fbPulse.Q THEN
+	nState := 1 ;
+END_IF
+
+CASE nState OF
+		
+	0: (* Iddle *)
+	;
+	
+	1:
+	
+	sError := '';
+	nState := 10; 
+	
+	10: (* Connect to Database *)
+	
+	IF fbSqlDatabase.Connect(hDBID) THEN
+		IF fbSqlDatabase.bError THEN
+			nState := 250; 
+        	tcMessage := fbSqlDatabase.ipTcResult;			
+		ELSE
+			nState := 20; 
+		END_IF
+	END_IF
+	
+	20:	(* Create Command *)
+	
+	IF fbSqlDatabase.CreateCmd(ADR(fbSqlCommand)) THEN
+		IF fbSqlDatabase.bError THEN
+			nState := 251; 
+		ELSE
+			nState := 30; 
+		END_IF
+	END_IF	
+	
+	30:  (* Execute Command *)
+	
+	IF fbSqlCommand.Execute(pSQLCmd:= ADR(sCommandSql), cbSQLCmd:= SIZEOF(sCommandSql)) THEN
+		IF fbSQLCommand.bError THEN
+			nState := 252; 
+        	tcMessage := fbSQLCommand.ipTcResult;			
+			bCommandOk := FALSE ;			
+		ELSE
+			nState := 40; 
+			bCommandOk := TRUE ;
+		END_IF
+	END_IF	
+	
+
+	40:  (* Desconectar *)
+	
+	IF fbSqlDatabase.Disconnect() THEN
+		IF fbSqlDatabase.bError THEN
+			nState := 253;
+		ELSE
+			nState := 0;
+   		END_IF
+	END_IF
+
+250: //Error step 10;
+	sError := 'Erro no bloco Connect';
+	nState := 40 ;
+
+251: //Error step 20 ;
+	sError := 'Erro no bloco Create Command';
+	nState := 40 ;
+252: //Error step 30 ;
+	sError := 'Erro no bloco Execute Command';
+	nState := 40 ;
+253: //Error step 40 ;
+	sError := 'Erro no bloco Disconect';
+	nState := 40 ;
+	
+END_CASE]]></ST>
+    </Implementation>
+  </POU>
+</TcPlcObject>

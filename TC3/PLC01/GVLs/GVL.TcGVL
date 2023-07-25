@@ -1,0 +1,12 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.12">
+  <GVL Name="GVL" Id="{d59edfbf-384d-4c68-b3e7-d451ad08c7a6}">
+    <Declaration><![CDATA[{attribute 'qualified_only'}
+VAR_GLOBAL
+	(* Estruturas com os valores convertidos *)	
+	EL3433_Ch1_PowerConverted : ST_ConvertedPower; //Estrutura que retorna os valores da Fase 1 (Tensao, Corrente...)
+	EL3433_Ch2_PowerConverted : ST_ConvertedPower; //Estrutura que retorna os valores da Fase 1 (Tensao, Corrente...)
+	EL3433_Ch3_PowerConverted : ST_ConvertedPower; //Estrutura que retorna os valores da Fase 1 (Tensao, Corrente...)
+END_VAR]]></Declaration>
+  </GVL>
+</TcPlcObject>

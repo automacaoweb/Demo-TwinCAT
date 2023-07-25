@@ -1,0 +1,88 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.12">
+  <POU Name="FB_SQL_WritePower" Id="{cd75374a-0804-4d92-9409-9e41a049efab}" SpecialFunc="None">
+    <Declaration><![CDATA[FUNCTION_BLOCK FB_SQL_WritePower
+VAR_INPUT
+	sTableName : T_MaxString;
+	sNameLoad : STRING(50)	;
+	dtTimestamp : DT;
+	stEnergy : ST_ConvertedPower ;	
+	bEnableWriteDatabase : BOOL;
+	iTimeWriteDatabase : INT ;
+END_VAR
+VAR_OUTPUT
+END_VAR
+VAR
+	ColumnInfo    	: ARRAY [0..12] OF ST_ColumnInfo;//Informações das colunas para criar tabela
+	ColumnNames     :  ARRAY[0..12] OF STRING(50);//Nome das colunas para salvar dados
+	DataToWrite 	: ST_DatabasePower ;
+	Timer 	: TON;
+    fbPLCDBWrite    :  FB_PLCDBWriteEvt(sNetID := '', tTimeout := T#5S); // Escrever dados
+	tcMessageWrite       :  I_TcMessage;
+	nRecords : UDINT ;
+    systime         :	GETSYSTEMTIME;									 //Faz a leitura da data e hora do sistema
+    currentTime     :	T_FILETIME;										 //
+	
+	
+END_VAR
+]]></Declaration>
+    <Implementation>
+      <ST><![CDATA[// Clock 10 segundos
+Timer(IN:= NOT Timer.Q , PT:= TO_TIME(iTimeWriteDatabase*1000) , Q=> , ET=> );
+
+
+//Date Time
+systime(timeLoDw => currentTime.dwLowDateTime, timeHiDW => currentTime.dwHighDateTime );
+
+
+//Dados.ID := 0;//Comentado pois assim o próprio SQL gera o ID único do dado;
+DataToWrite.Timestamp := FILETIME_TO_DT(currentTime);
+DataToWrite.Name := sNameLoad ;
+DataToWrite.ActivePower := stEnergy.ActivePower;
+DataToWrite.ApparentPower := stEnergy.ApparentPower;
+DataToWrite.ReactivePower := stEnergy.ReactivePower;
+DataToWrite.Voltage := stEnergy.Voltage;
+DataToWrite.Current := stEnergy.Current;
+DataToWrite.Cosphi := stEnergy.Cosphi;
+DataToWrite.Frequency := stEnergy.Frequency;
+DataToWrite.AngleBetweenPhase1 := stEnergy.AngleBetweenPhase1;
+DataToWrite.Energy := stEnergy.Energy;
+DataToWrite.EnergyNegative := stEnergy.EnergyNegative;
+
+
+
+// Definição do nome das colunas
+ColumnNames[0] := 'ID';
+ColumnNames[1] := 'Timestamp';
+ColumnNames[2] := 'Name';
+ColumnNames[3] := 'ActivePower';
+ColumnNames[4] := 'ApparentPower';
+ColumnNames[5] := 'ReactivePower';
+ColumnNames[6] := 'Voltage';
+ColumnNames[7] := 'Current';
+ColumnNames[8] := 'Cosphi';
+ColumnNames[9] := 'Frequency';
+ColumnNames[10] := 'AngleBetweenPhase1';
+ColumnNames[11] := 'Energy';
+ColumnNames[12] := 'EnergyNegative';
+
+
+// Chamada da função de escrita
+IF Timer.Q  THEN
+	IF fbPLCDBWrite.WriteStruct(
+		hDBID:= 1, 
+		sTableName:= sTableName, 
+		pRecord:= ADR(DataToWrite), 
+		cbRecord:= SIZEOF(DataToWrite), 
+		pColumnNames:= ADR(ColumnNames), 
+		cbColumnNames:= SIZEOF(ColumnNames))
+	THEN
+		IF fbPLCDBWrite.bError THEN
+			tcMessageWrite := fbPLCDBWrite.ipTcResult;
+		END_IF
+	END_IF 
+END_IF
+]]></ST>
+    </Implementation>
+  </POU>
+</TcPlcObject>

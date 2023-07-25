@@ -1,0 +1,111 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.12">
+  <POU Name="FB_SQL_TO_CSV" Id="{068258da-a33d-45c5-9ede-a91b88ee79ee}" SpecialFunc="None">
+    <Declaration><![CDATA[FUNCTION_BLOCK FB_SQL_TO_CSV
+VAR_INPUT
+	bExecute : BOOL ;
+END_VAR
+VAR_OUTPUT
+END_VAR
+VAR
+	hDBID : UDINT 	:= 1;
+	fbSqlDatabase : FB_SQLDatabaseEvt(sNetID := '', tTimeout := T#180S);
+	fbSqlCommand : FB_SQLCommandEvt(sNetID := '', tTimeout := T#180S) ;
+    fbSqlResult : FB_SQLResultEvt(sNetID:='', tTimeout    := T#180S); 
+	fbPulse : R_TRIG ;	
+	sDateStartAux : STRING ;	
+	sDateEndtAux : STRING ;	
+	nState: INT;
+	sSqlCommand: STRING(INT#450);
+END_VAR
+]]></Declaration>
+    <Implementation>
+      <ST><![CDATA[
+
+sSqlCommand := 'DECLARE @SQLQuery AS NVARCHAR(200) 
+				DECLARE @FilePath AS NVARCHAR(200)  
+				SET @SQLQuery = $'SELECT * FROM [DB_PowerMeasure].[dbo].[TB_PowerMeter]$'
+				SET @FilePath = $'C:\temp\arquivo.csv$' 
+				SET @SQLQuery = $'bcp "$' + @SQLQuery + $'" queryout "$' + @FilePath + $'" -c -t, -T -S DOUGLASC-NB01\SQLEXPRESS$'  
+				EXEC xp_cmdshell @SQLQuery  ';
+
+fbPulse(CLK:= bExecute, Q=> );
+
+
+IF fbPulse.Q THEN
+	nState := 10 ;
+END_IF
+	
+
+
+CASE nState OF
+
+0:
+
+;
+
+10:
+
+IF fbSqlDatabase.Connect(hDBID) THEN
+	IF fbSqlDatabase.bError THEN
+		nState := 250; 
+	ELSE
+		nState := 20; 
+	END_IF
+END_IF
+
+20:	
+IF fbSqlDatabase.CreateCmd(ADR(fbSqlCommand)) THEN
+	IF fbSqlDatabase.bError THEN
+		nState := 251; 
+	ELSE
+		nState := 30; 
+	END_IF
+END_IF	
+
+
+30:
+IF fbSqlCommand.Execute(pSQLCmd:= ADR(sSqlCommand), cbSQLCmd:= SIZEOF(sSqlCommand)) THEN
+
+	IF fbSQLCommand.bError THEN
+		nState := 252; 
+	ELSE
+		nState := 40; 
+	END_IF
+END_IF	
+
+
+40:
+
+fbSqlResult.Release();
+
+IF fbSqlResult.bError THEN
+	nState := 254 ;
+ELSE
+	nState := 50;	
+END_IF
+
+
+50: 	
+fbSqlResult.Release();	
+
+IF fbSqlDatabase.Disconnect() THEN
+	IF fbSqlDatabase.bError THEN
+		nState := 255;
+	ELSE
+		nState := 0;
+	END_IF
+END_IF
+
+250: ;
+251: ;
+252: ;
+253: ;
+254: ;
+255: ;
+	
+END_CASE
+]]></ST>
+    </Implementation>
+  </POU>
+</TcPlcObject>

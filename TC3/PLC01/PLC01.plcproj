@@ -1,0 +1,176 @@
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <FileVersion>1.0.0.0</FileVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{b4ba19e1-48f0-406e-bb34-137c786e5775}</ProjectGuid>
+    <SubObjectsSortedByName>True</SubObjectsSortedByName>
+    <DownloadApplicationInfo>true</DownloadApplicationInfo>
+    <WriteProductVersion>true</WriteProductVersion>
+    <GenerateTpy>false</GenerateTpy>
+    <Name>PLC01</Name>
+    <ProgramVersion>3.1.4024.0</ProgramVersion>
+    <Application>{cc175f9f-ba64-4bce-95bd-ce5475937155}</Application>
+    <TypeSystem>{f55e07f1-2bd1-4b52-8931-ed49b0cd2205}</TypeSystem>
+    <Implicit_Task_Info>{e9959870-5a33-49d1-8b91-71247dd3c0d4}</Implicit_Task_Info>
+    <Implicit_KindOfTask>{8c2e8e9f-b0ea-4ffd-b3b5-75a72b763ff5}</Implicit_KindOfTask>
+    <Implicit_Jitter_Distribution>{b600e823-fedc-4d02-8c65-1b36cb569f20}</Implicit_Jitter_Distribution>
+    <LibraryReferences>{13818768-5c25-40ac-b08c-4babf7d5105b}</LibraryReferences>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Include="DUTs\Database\ST_DatabasePower.TcDUT">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="DUTs\HMI\ST_Valve.TcDUT">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="DUTs\PowerMeter\ST_AuxConvertedMeasure.TcDUT">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="DUTs\PowerMeter\ST_AuxiliaryPowerValues.TcDUT">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="DUTs\PowerMeter\ST_Channel.TcDUT">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="DUTs\PowerMeter\ST_ConvertedPower.TcDUT">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="DUTs\PowerMeter\ST_PowerMeter.TcDUT">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="DUTs\ST_Convert.TcDUT">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="FBs\Database\FB_SQL_TO_CSV.TcPOU">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="FBs\Database\General\FB_SQL_ExecuteComandWithoutReturn.TcPOU">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="FBs\Database\General\FB_SQL_ReadWithData.TcPOU">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="FBs\Database\PowerMeter\FB_SQL_ReadPower.TcPOU">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="FBs\Database\PowerMeter\FB_SQL_WritePower.TcPOU">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="FBs\PowerMeter\FB_LastTimeSimple.TcPOU">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="FBs\PowerMeter\FB_MeasureAuxPhasePower.TcPOU">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="FBs\PowerMeter\FB_PowerMeter.TcPOU">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="FBs\PowerMeter\FB_Simulate_EL3433.TcPOU">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="FBs\Process\FB_Pump.TcPOU">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="FBs\Process\FB_Valve.TcPOU">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="FCs\FC_ConcatStr.TcPOU">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="GVLs\GVL.TcGVL">
+      <SubType>Code</SubType>
+      <LinkAlways>true</LinkAlways>
+    </Compile>
+    <Compile Include="GVLs\GVL_HMI.TcGVL">
+      <SubType>Code</SubType>
+      <LinkAlways>true</LinkAlways>
+    </Compile>
+    <Compile Include="GVLs\GVL_IO.TcGVL">
+      <SubType>Code</SubType>
+      <LinkAlways>true</LinkAlways>
+    </Compile>
+    <Compile Include="PlcTask.TcTTO">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="POUs\Database\PRG_Database.TcPOU">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="POUs\Eletric\PRG_Eletric.TcPOU">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="POUs\MAIN.TcPOU">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="POUs\PowerMeter\PRG_PowerMeter.TcPOU">
+      <SubType>Code</SubType>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="DUTs" />
+    <Folder Include="DUTs\HMI" />
+    <Folder Include="DUTs\Database" />
+    <Folder Include="DUTs\PowerMeter" />
+    <Folder Include="FBs\Database" />
+    <Folder Include="FBs\Database\General" />
+    <Folder Include="FBs\Database\PowerMeter" />
+    <Folder Include="FBs\Process" />
+    <Folder Include="FBs\PowerMeter" />
+    <Folder Include="GVLs" />
+    <Folder Include="FBs" />
+    <Folder Include="FCs" />
+    <Folder Include="POUs\Database" />
+    <Folder Include="POUs\Eletric" />
+    <Folder Include="POUs\Process" />
+    <Folder Include="POUs\PowerMeter" />
+    <Folder Include="VISUs" />
+    <Folder Include="POUs" />
+  </ItemGroup>
+  <ItemGroup>
+    <PlaceholderReference Include="Tc2_Standard">
+      <DefaultResolution>Tc2_Standard, * (Beckhoff Automation GmbH)</DefaultResolution>
+      <Namespace>Tc2_Standard</Namespace>
+    </PlaceholderReference>
+    <PlaceholderReference Include="Tc2_System">
+      <DefaultResolution>Tc2_System, * (Beckhoff Automation GmbH)</DefaultResolution>
+      <Namespace>Tc2_System</Namespace>
+    </PlaceholderReference>
+    <PlaceholderReference Include="Tc2_Utilities">
+      <DefaultResolution>Tc2_Utilities, * (Beckhoff Automation GmbH)</DefaultResolution>
+      <Namespace>Tc2_Utilities</Namespace>
+    </PlaceholderReference>
+    <PlaceholderReference Include="Tc3_Database">
+      <DefaultResolution>Tc3_Database, * (Beckhoff Automation GmbH)</DefaultResolution>
+      <Namespace>Tc3_Database</Namespace>
+    </PlaceholderReference>
+    <PlaceholderReference Include="Tc3_EventLogger">
+      <DefaultResolution>Tc3_EventLogger, * (Beckhoff Automation GmbH)</DefaultResolution>
+    </PlaceholderReference>
+    <PlaceholderReference Include="Tc3_Module">
+      <DefaultResolution>Tc3_Module, * (Beckhoff Automation GmbH)</DefaultResolution>
+      <Namespace>Tc3_Module</Namespace>
+    </PlaceholderReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="PLC01.tmc">
+      <SubType>Content</SubType>
+    </None>
+  </ItemGroup>
+  <ProjectExtensions>
+    <PlcProjectOptions>
+      <XmlArchive>
+        <Data>
+          <o xml:space="preserve" t="OptionKey">
+      <v n="Name">"&lt;ProjectRoot&gt;"</v>
+      <d n="SubKeys" t="Hashtable" />
+      <d n="Values" t="Hashtable" />
+    </o>
+        </Data>
+        <TypeList>
+          <Type n="Hashtable">System.Collections.Hashtable</Type>
+          <Type n="OptionKey">{54dd0eac-a6d8-46f2-8c27-2f43c7e49861}</Type>
+          <Type n="String">System.String</Type>
+        </TypeList>
+      </XmlArchive>
+    </PlcProjectOptions>
+  </ProjectExtensions>
+</Project>
