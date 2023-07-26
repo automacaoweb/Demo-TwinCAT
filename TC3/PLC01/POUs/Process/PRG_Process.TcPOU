@@ -3,10 +3,14 @@
   <POU Name="PRG_Process" Id="{80ae12b7-815f-4bcb-8300-fa0ba320e943}" SpecialFunc="None">
     <Declaration><![CDATA[PROGRAM PRG_Process
 VAR
+	iTank : INT ;
 END_VAR
 ]]></Declaration>
     <Implementation>
-      <ST><![CDATA[]]></ST>
+      <ST><![CDATA[
+
+
+iTank := iTank + 1 ;]]></ST>
     </Implementation>
   </POU>
 </TcPlcObject>

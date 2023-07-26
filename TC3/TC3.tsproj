@@ -139,7 +139,7 @@
 		</Motion>
 		<Plc>
 			<Project GUID="{B4BA19E1-48F0-406E-BB34-137C786E5775}" Name="PLC01" PrjFilePath="PLC01\PLC01.plcproj" TmcFilePath="PLC01\PLC01.tmc" ReloadTmc="true" AmsPort="851" FileArchiveSettings="#x000e" SymbolicMapping="true">
-				<Instance Id="#x08502000" TcSmClass="TComPlcObjDef" KeepUnrestoredLinks="2" TmcPath="PLC01\PLC01.tmc" TmcHash="{B9C2ADCE-DCF6-E248-8013-75AABFBF7121}">
+				<Instance Id="#x08502000" TcSmClass="TComPlcObjDef" KeepUnrestoredLinks="2" TmcPath="PLC01\PLC01.tmc" TmcHash="{7D2EFB8C-C2A3-96A1-0E1C-DBF2F0F764B9}">
 					<Name>PLC01 Instance</Name>
 					<CLSID ClassFactory="TcPlc30">{08500001-0000-0000-F000-000000000064}</CLSID>
 					<Vars VarGrpType="1">

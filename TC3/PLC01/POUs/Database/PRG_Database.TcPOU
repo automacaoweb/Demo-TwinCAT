@@ -33,14 +33,21 @@ END_VAR
       <ST><![CDATA[(**********************************************************************************)	
 (***************** CRIAR TABELA / CREATE TABLE / CREAR TABLA **********************)
 
-sSqlCmdCreateTable := 'CREATE TABLE [TB_PowerMeter] ([ID] bigint IDENTITY(1,1), [Timestamp] datetime, [Name] varchar(50), [ActivePower] float, [ApparentPower] float, [ReactivePower] float, [Voltage] float, [Current] float, [Cosphi] float, [Frequency] float, [AngleBetweenPhase1] float, [Energy] float, [EnergyNegative] float)';
+sSqlCmdCreateTable := 'CREATE TABLE [TB_PowerMeter22] ([ID] bigint IDENTITY(1,1), [Timestamp] datetime, [Name] varchar(50), [ActivePower] float, [ApparentPower] float, [ReactivePower] float, [Voltage] float, [Current] float, [Cosphi] float, [Frequency] float, [AngleBetweenPhase1] float, [Energy] float, [EnergyNegative] float)';
 
+
+IF 	M_CreateDatabase(bExecute:= bCreateDatabase, hDBID:= 1, sCommandSql:= sSqlCmdCreateTable ) THEN
+;	
+END_IF
+
+
+(*
 fbCreateTable(bExecute:= bCreateDatabase, 
 			  hDBID:= 1, 
 			  sCommandSql:= sSqlCmdCreateTable, 
 			  bCommandOk=> bDatabaseCreated,
 			  sError => sError);
-
+*)
 			  
 (**********************************************************************************)			  
 (*  ESCREVER NO BANCO DE DADOS A CADA 10S / WRITE TO DATABASE EVERY 10S/ ESCRIBIR EN LA BASE DE DATOS A CADA 10S *)
@@ -99,5 +106,99 @@ sSqlCmdSQLToCSV := 'DECLARE @SQLQuery AS NVARCHAR(200)
 				EXEC xp_cmdshell @SQLQuery  ';
 	]]></ST>
     </Implementation>
+    <Method Name="M_CreateDatabase" Id="{6aabfa82-259e-4524-ab6c-642dcfc4ea4d}">
+      <Declaration><![CDATA[METHOD PUBLIC M_CreateDatabase : BOOL
+VAR_INPUT
+	bExecute : BOOL ;
+	hDBID : INT ;
+	sCommandSql : STRING(512) ;
+END_VAR
+
+VAR
+	fbPulse: R_TRIG;
+	fbSqlDatabase : FB_SQLDatabaseEvt(sNetID := '', tTimeout := T#10S);
+	fbSqlCommand : FB_SQLCommandEvt(sNetID := '', tTimeout := T#180S) ;
+    tcMessage    : I_TcMessage;	
+	nState: INT;
+END_VAR]]></Declaration>
+      <Implementation>
+        <ST><![CDATA[fbPulse(CLK:= bExecute, Q=> );
+
+IF fbPulse.Q THEN
+	nState := 1 ;
+END_IF
+
+CASE nState OF
+		
+	0: (* Iddle *)
+	;
+	
+	1:
+	
+	sError := '';
+	nState := 10; 
+	
+	10: (* Connect to Database *)
+	
+	IF fbSqlDatabase.Connect(hDBID) THEN
+		IF fbSqlDatabase.bError THEN
+			nState := 250; 
+        	tcMessage := fbSqlDatabase.ipTcResult;			
+		ELSE
+			nState := 20; 
+		END_IF
+	END_IF
+	
+	20:	(* Create Command *)
+	
+	IF fbSqlDatabase.CreateCmd(ADR(fbSqlCommand)) THEN
+		IF fbSqlDatabase.bError THEN
+			nState := 251; 
+		ELSE
+			nState := 30; 
+		END_IF
+	END_IF	
+	
+	30:  (* Execute Command *)
+	
+	IF fbSqlCommand.Execute(pSQLCmd:= ADR(sCommandSql), cbSQLCmd:= SIZEOF(sCommandSql)) THEN
+		IF fbSQLCommand.bError THEN
+			nState := 252; 
+        	tcMessage := fbSQLCommand.ipTcResult;			
+			M_CreateDatabase := FALSE ;			
+		ELSE
+			nState := 40; 
+			M_CreateDatabase := TRUE ;
+		END_IF
+	END_IF	
+	
+
+	40:  (* Desconectar *)
+	
+	IF fbSqlDatabase.Disconnect() THEN
+		IF fbSqlDatabase.bError THEN
+			nState := 253;
+		ELSE
+			nState := 0;
+   		END_IF
+	END_IF
+
+250: //Error step 10;
+	sError := 'Erro no bloco Connect';
+	nState := 40 ;
+
+251: //Error step 20 ;
+	sError := 'Erro no bloco Create Command';
+	nState := 40 ;
+252: //Error step 30 ;
+	sError := 'Erro no bloco Execute Command';
+	nState := 40 ;
+253: //Error step 40 ;
+	sError := 'Erro no bloco Disconect';
+	nState := 40 ;
+	
+END_CASE]]></ST>
+      </Implementation>
+    </Method>
   </POU>
 </TcPlcObject>

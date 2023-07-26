@@ -41,13 +41,13 @@
     <Compile Include="DUTs\ST_Convert.TcDUT">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="FBs\Database\FB_SQL_TO_CSV.TcPOU">
-      <SubType>Code</SubType>
-    </Compile>
     <Compile Include="FBs\Database\General\FB_SQL_ExecuteComandWithoutReturn.TcPOU">
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="FBs\Database\General\FB_SQL_ReadWithData.TcPOU">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="FBs\Database\General\FB_SQL_TO_CSV.TcPOU">
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="FBs\Database\PowerMeter\FB_SQL_ReadPower.TcPOU">
@@ -102,6 +102,9 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="POUs\PowerMeter\PRG_PowerMeter.TcPOU">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="POUs\Process\PRG_Process.TcPOU">
       <SubType>Code</SubType>
     </Compile>
   </ItemGroup>
